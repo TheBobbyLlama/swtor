@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0cee0005.css",
+    "main.js": "/static/js/main.feaf4cc8.js",
+    "static/js/453.1fca83dd.chunk.js": "/static/js/453.1fca83dd.chunk.js",
+    "static/media/SfDistantGalaxy-0l3d.ttf": "/static/media/SfDistantGalaxy-0l3d.ee1b4a3597465caa4073.ttf",
+    "static/media/spinner.gif": "/static/media/spinner.7b4da7a15287c40931f1.gif",
+    "index.html": "/index.html",
+    "main.0cee0005.css.map": "/static/css/main.0cee0005.css.map",
+    "main.feaf4cc8.js.map": "/static/js/main.feaf4cc8.js.map",
+    "453.1fca83dd.chunk.js.map": "/static/js/453.1fca83dd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cee0005.css",
+    "static/js/main.feaf4cc8.js"
+  ]
+}
