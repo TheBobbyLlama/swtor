@@ -1,0 +1,82 @@
+.mdxeditor p {
+	margin: 0;
+}
+
+.mdxeditor p + p {
+	margin-top: 1rem;
+}
+
+.mdxeditor-toolbar {
+	background-color: transparent !important;
+	border-radius: 0;
+	padding: 0;
+}
+
+.markdown-input, .markdown-textarea {
+	background-color: #181008;
+	background-image: linear-gradient(#0c0804, #181008, #181008);
+	border: solid 1px #a09040;
+	border-radius: 4px;
+	border-top-right-radius: 0;
+	color: #c0a040;
+	padding: 2px 8px;
+	z-index: 10;
+}
+
+.markdown-textarea {
+	overflow-y: auto;
+}
+
+.markdown-toolbar {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.markdown-toolbar > label {
+	color: white;
+	font-weight: bold;
+}
+
+.markdown-toolbar > div {
+	align-self: flex-end;
+	border-radius: 4px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	color: silver;
+	display: flex;
+	margin: 0;
+}
+
+.markdown-toolbar div[role="separator"] {
+  opacity: 25%;
+}
+
+.markdown-toolbar button {
+	background-color: rgba(0, 0, 0, 0.75);
+	cursor: pointer;
+	transition: background-color 0.5s, color 0.5s;
+}
+
+.markdown-toolbar button svg {
+	color: #c0a040;
+	max-height: 5vw;
+	max-width: 5vw;
+	transition: background-color 0.5s, color 0.5s;
+}
+
+.markdown-toolbar button:disabled {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: rgba(128, 128, 128, 0.5);
+}
+
+.markdown-toolbar button:hover, .markdown-toolbar button svg:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.empire .markdown-input, .empire .markdown-textarea {
+	background-image: url('../..//assets/images/greeblingText.png'), linear-gradient(#0c0804, #181008, #181008);
+	border-color: #403810;
+}

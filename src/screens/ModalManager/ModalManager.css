@@ -1,0 +1,77 @@
+#modalBG {
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.75);
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+}
+
+#modalBG > section {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - 60px);
+	max-width: calc(100vw - 40px);
+	overflow-y: auto;
+	width: 400px;
+}
+
+#modalBG > section > h2 {
+	margin-bottom: 10px;
+}
+
+#modalBG > section > h3 {
+	margin: 20px 0 4px 0;
+}
+
+#modalBG > section > div:last-child {
+	display: flex;
+	gap: 10px;
+	margin-top: 16px;
+}
+
+#modalBG > section > .list::before {
+	content: '●';
+	left: -20px;
+	position: absolute;
+}
+
+#modalBG > section > .list {
+	margin: 4px 0px 0 32px;
+	max-width: 600px;
+	position: relative;
+	width: fit-content;
+}
+
+#modalBG > section > .warning {
+	color: red;
+}
+
+#modalBG > .holder {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	overflow-y: auto;
+	pointer-events: none;
+	width: 100%;
+}
+
+#modalBG > .holder > * {
+	max-width: 1000px;
+	pointer-events: all;
+}
+
+#section-help th {
+	align-items: center;
+	display: flex;
+	gap: 8px;
+	padding-right: 10px;
+	text-align: left;
+}

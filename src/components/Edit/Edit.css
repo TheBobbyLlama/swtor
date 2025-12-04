@@ -1,0 +1,213 @@
+#edit, .edit-page {
+	margin-top: 16px;
+	transition: height 0.5s ease-in-out width 0.5s ease-in-out;
+	width: calc(100% - 90px);
+}
+
+#edit input {
+	font-size: 1.25rem;
+}
+
+#edit input[type='text'] {
+	max-width: 200px;
+	width: 40vw;
+}
+
+#edit h1 {
+	align-items: center;
+	display: flex;
+}
+
+#edit h4 {
+	margin-top: 20px;
+}
+
+#edit section + h3 {
+	margin-top: 10px;
+}
+
+.edit-button-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+#edit .error, .edit-page .error {
+	border-color: red;
+}
+
+#edit .character-image {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	gap: 20px;
+	justify-content: center;
+	width: 100%;
+}
+
+#edit .character-image .image-demo {
+	background-color: black;
+	background-position: center !important;
+	background-size: cover !important;
+	border: solid 4px;
+	border-radius: 8px;
+	max-height: calc(100vw - 100px);
+	max-width: calc(100vw - 100px);
+	height: 256px;
+	width: 256px;
+}
+
+#edit .character-image > div:last-child {
+	align-items: stretch;
+	display: flex;
+	flex-grow: 1;
+	min-width: 256px;
+}
+
+#edit .character-image > div:last-child > textarea {
+	min-height: 5rem;
+	width: 100%;
+}
+
+#edit .character-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 10px 20px;
+	position: relative;
+	width: 100%;
+}
+
+#edit .character-info > div {
+	align-items: flex-end;
+	display: flex;
+	gap: 10px;
+}
+
+#edit .character-info > div > *:last-child {
+	flex-basis: 100%;
+	flex-grow: 1;
+}
+
+#edit .character-info label {
+	margin: 0.25rem 0;
+}
+
+#edit .character-custom > div {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+#edit .character-custom > div > input {
+	width: 50%;
+}
+
+#edit .character-custom > div + div {
+	margin-top: 10px;
+}
+
+#edit .quickbar, .edit-page .quickbar {
+	display: flex;
+	justify-content: space-between;
+	left: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.edit-holder {
+	padding-bottom: 20px;
+}
+
+#edit h1 > input[type='text'] {
+	font-size: 2rem;
+	margin-top: 0.75rem;
+	max-width: calc(100vw - 5rem);
+	text-align: center;
+	width: 100%;
+}
+
+.edit-page h2 > input {
+	font-size: 1.75rem;
+	margin-top: 0.75rem;
+	max-width: calc(100vw - 10rem);
+	text-align: center;
+}
+
+.edit-page h3 > input {
+	font-size: 1.25rem;
+	margin-top: 0.75rem;
+	max-width: calc(100vw - 10rem);
+	text-align: center;
+}
+
+.edit-page input[type='url'] {
+	width: calc(100% - 20px);
+}
+
+.edit-page section {
+	border: solid 1px;
+	border-radius: 8px;
+	padding: 10px;
+	width: 100%;
+}
+
+.edit-page section + section {
+	margin-top: 10px;
+}
+
+.edit-page section .markdown-textarea {
+	height: 20em;
+}
+
+.edit-page .invalid {
+	border-color: #ff8000 !important;
+}
+
+.edit-page .valid {
+	border-color: green !important;
+}
+
+.edit-page .itemized-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+}
+
+.edit-page .edit-button-row {
+	margin: 20px 0;
+}
+
+.edit-page .table-holder input {
+	font-size: 1.1rem;
+	font-weight: bold;
+	width: calc(100% - 16px);
+}
+
+.edit-page .table-holder .text-input {
+	height: 10rem;
+}
+
+.republic #edit .character-image .image-demo {
+	border-color: #43cef7;
+}
+
+.republic .edit-page section {
+	border-color: #003660;
+}
+
+.empire #edit .character-image .image-demo {
+	border-color: #600000;
+}
+
+.empire .edit-page section {
+	border-color: #200000;
+}
+
+#edit .invalid {
+	border-color: red;
+	color: red;
+}

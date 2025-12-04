@@ -1,0 +1,219 @@
+#browse {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+}
+
+#browse button {
+	border-radius: 4px;
+	color: white;
+}
+
+#browse button .hover-hide {
+	display: block;
+}
+
+#browse button:hover .hover-hide {
+	display: none;
+}
+
+#browse button .hover-only {
+	display: none;
+}
+
+#browse button:hover .hover-only {
+	display: block;
+}
+
+#browse button.empire {
+	border: solid 4px #600000;
+	background-color: #400000;
+	background-image: url('../../assets/images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+}
+
+#browse button[disabled] {
+	opacity: 0.75;
+}
+
+#browse button.republic {
+	background-color: #0c5679;
+	background-image: linear-gradient(#0c5679, #0c5679, #003660);
+	border: solid 4px #43cef7;
+}
+
+#browse button.filter {
+	border-radius: 50%;
+	border-width: 2px;
+	height: 1.25rem;
+	padding: 0;
+	width: 1.25rem;
+}
+
+#browse button.filter.empire.enabled::after {
+	background-color: #c0a040;
+	border-radius: 50%;
+	content: '';
+	height: 0.5rem;
+	position: absolute;
+	width: 0.5rem;
+}
+
+#browse button.filter.republic.enabled::after {
+	background-color: white;
+	border-radius: 50%;
+	content: '';
+	height: 0.5rem;
+	position: absolute;
+	width: 0.5rem;
+}
+
+#browse .header, #browse .characters {
+	transition: opacity 0.5s;
+}
+
+#browse .character-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 200px;
+	padding: 4px 10px 20px 10px;
+}
+
+#browse .character-list h3 {
+	margin: 8px 0;
+}
+
+#browse .character-list > div {
+	display: flex;
+	gap: 4px;
+}
+
+#browse .character-list > div.header {
+	justify-content: space-between;
+}
+
+#browse .character-list > div > div {
+	align-items: center;
+	display: flex;
+	gap: 4px;
+}
+
+#browse .character-list > div.characters {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	overflow-y: auto;
+}
+
+#browse .character-list > div.characters:last-child {
+	flex-direction: row;
+}
+
+#browse .character-list select {
+	flex-grow: 1;
+}
+
+#browse div.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+#browse .character-profile {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-around;
+	overflow-x: hidden;
+	padding-left: 20px;
+}
+
+#browse .character-profile .profile-holder {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+	overflow-y: auto;
+	width: 100%;
+}
+
+#browse .character-profile .profile-holder > div {
+	position: relative;
+	max-width: 1300px;
+	overflow: visible;
+	width: 100%;
+}
+
+#browse .character-profile .edit-holder {
+	overflow-y: auto;
+	position: relative;
+}
+
+#browse .character-profile .edit {
+	position: absolute;
+	right: 44px;
+	top: 20px;
+	z-index: 100;
+}
+
+#browse .character-profile .edit button {
+	color: silver;
+}
+
+#browse .profile-tools {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#browse .quick-links {
+	display: flex;
+	gap: 10px;
+	justify-content: flex-start;
+	margin-left: -8px;
+	margin-right: -8px;
+}
+
+#browse .mobile-only {
+	display: none !important;
+}
+
+@media screen and (max-width: 800px) {
+	#browse {
+		flex-direction: column;
+	}
+
+	#browse .character-list {
+		padding-bottom: 8px;
+		padding-top: 0;
+	}
+
+	#browse .character-list h3 {
+		margin: 0;
+	}
+
+	#browse .character-profile {
+		position: relative;
+		margin-top: 0;
+	}
+
+	#browse .quick-links {
+		border-bottom: solid 1px #0c5679;
+	}
+
+	.empire #browse .quick-links {
+		border-bottom: solid 1px #300000;
+	}
+
+	#browse .profile-tools {
+		right: 8px;
+	}
+
+	#browse .mobile-only {
+		display: flex !important;
+	}
+
+	#browse .no-mobile {
+		display: none !important;
+	}
+}

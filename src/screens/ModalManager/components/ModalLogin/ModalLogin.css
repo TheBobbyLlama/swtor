@@ -1,0 +1,23 @@
+#login a {
+	font-size: 1rem;
+}
+
+#login .button-row {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	margin: 10px 0;
+}
+
+#login div.error {
+	color: red;
+}
+
+#login input.error {
+	border-color: red;
+}
+
+/* Override base styling */
+#login td {
+	border-top: none;
+}

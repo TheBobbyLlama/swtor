@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  align-items: center;
+  bottom: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.panel {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.panel + .panel {
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-holder {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+
+.table-holder td, .table-holder th {
+  padding: 4px 8px;
+}
+
+.jedi,
+.republic .panel {
+  background-color: #0c5679;
+	background-image: linear-gradient(#0c5679, #0c5679, #003660);
+	border: solid 4px #43cef7;
+}
+
+.republic hr {
+  border-color: #003660;
+  color: #003660;
+}
+
+.republic iframe {
+  border: solid 2px #43cef7;
+}
+
+.republic tr + tr td {
+  border-top: solid 1px #003660;
+}
+
+.republic .table-holder table {
+  background-color: #0c5679;
+	background-image: linear-gradient(#0c5679, #0c5679, #003660);
+}
+
+.republic .table-holder table, .republic .table-holder td {
+  border: solid 1px #003660;
+}
+
+.republic .table-holder th {
+  background-color: #003660;
+}
+
+.empire a:link {
+	color: #c0a040;
+}
+
+.empire a:visited {
+	color: #a09040;
+}
+
+.empire input[type='email'], .empire input[type='password'], .empire input[type='text'], .empire input[type='url'], .empire select, .empire textarea, .empire .text-input {
+	background-image: url('./assets/images/greeblingText.png'), linear-gradient(#0c0804, #181008, #181008);
+	border-color: #403810;
+}
+
+.sith,
+.empire .panel {
+	border: solid 4px #600000;
+	background-color: #400000;
+	background-image: url('./assets/images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+}
+
+.empire hr {
+  border-color: #300000;
+  color: #300000;
+}
+
+.empire iframe {
+  border: solid 2px #600000;
+}
+
+.empire tr + tr td{
+  border-top: solid 1px #300000;
+}
+
+.empire .table-holder table {
+	background-color: #400000;
+	background-image: url('./assets/images/greebling.png'), linear-gradient(#400000, #400000, #300000);
+}
+
+.emipre .table-holder table, .empire .table-holder td {
+  border: solid 1px #300000;
+}
+
+.empire .table-holder th {
+  background-color: #300000;
 }

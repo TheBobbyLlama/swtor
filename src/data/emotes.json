@@ -1,0 +1,1262 @@
+[
+	{
+		"emote": "/accuse",
+		"type": "free"
+	},
+	{
+		"emote": "/agent",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/aircontrol",
+		"type": "market"
+	},
+	{
+		"emote": "/airdrums",
+		"type": "market"
+	},
+	{
+		"emote": "/airpunch",
+		"type": "market"
+	},
+	{
+		"emote": "/angry",
+		"type": "sub"
+	},
+	{
+		"emote": "/angrydance",
+		"type": "market"
+	},
+	{
+		"emote": "/apologize",
+		"type": "sub"
+	},
+	{
+		"emote": "/applaud",
+		"type": "sub"
+	},
+	{
+		"emote": "/armscrossed",
+		"type": "market"
+	},
+	{
+		"emote": "/attacktarget",
+		"type": "sub"
+	},
+	{
+		"emote": "/backflip",
+		"type": "market"
+	},
+	{
+		"emote": "/battleplan",
+		"type": "market"
+	},
+	{
+		"emote": "/beachparty",
+		"type": "market"
+	},
+	{
+		"emote": "/beatchest",
+		"type": "market"
+	},
+	{
+		"emote": "/beckon",
+		"type": "sub"
+	},
+	{
+		"emote": "/beg",
+		"type": "sub"
+	},
+	{
+		"emote": "/belch",
+		"type": "sub"
+	},
+	{
+		"emote": "/beltcheck",
+		"type": "market"
+	},
+	{
+		"emote": "/bicepkiss",
+		"type": "market"
+	},
+	{
+		"emote": "/binoculars",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/blink",
+		"type": "free"
+	},
+	{
+		"emote": "/blow",
+		"type": "sub"
+	},
+	{
+		"emote": "/blush",
+		"type": "sub"
+	},
+	{
+		"emote": "/bonk",
+		"type": "sub"
+	},
+	{
+		"emote": "/boogie",
+		"type": "market"
+	},
+	{
+		"emote": "/boohoo",
+		"type": "market"
+	},
+	{
+		"emote": "/bop",
+		"type": "market"
+	},
+	{
+		"emote": "/bored",
+		"type": "free"
+	},
+	{
+		"emote": "/bottlebreak",
+		"type": "market"
+	},
+	{
+		"emote": "/bound",
+		"type": "market"
+	},
+	{
+		"emote": "/bountyhunter",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/bow",
+		"type": "free"
+	},
+	{
+		"emote": "/bowformal",
+		"type": "sub"
+	},
+	{
+		"emote": "/bowrespect",
+		"type": "sub"
+	},
+	{
+		"emote": "/boxing",
+		"type": "market"
+	},
+	{
+		"emote": "/brb",
+		"type": "free"
+	},
+	{
+		"emote": "/burp",
+		"type": "sub"
+	},
+	{
+		"emote": "/cackle",
+		"type": "sub"
+	},
+	{
+		"emote": "/calm",
+		"type": "free"
+	},
+	{
+		"emote": "/cartwheel",
+		"type": "market"
+	},
+	{
+		"emote": "/catchup",
+		"type": "sub"
+	},
+	{
+		"emote": "/chair",
+		"type": "free"
+	},
+	{
+		"emote": "/chair1",
+		"type": "market"
+	},
+	{
+		"emote": "/chair2",
+		"type": "market"
+	},
+	{
+		"emote": "/chair3",
+		"type": "market"
+	},
+	{
+		"emote": "/chair4",
+		"type": "market"
+	},
+	{
+		"emote": "/chair5",
+		"type": "market"
+	},
+	{
+		"emote": "/chair6",
+		"type": "market"
+	},
+	{
+		"emote": "/chair9",
+		"type": "market"
+	},
+	{
+		"emote": "/chair10",
+		"type": "market"
+	},
+	{
+		"emote": "/cheer",
+		"type": "sub"
+	},
+	{
+		"emote": "/cheer2",
+		"type": "market"
+	},
+	{
+		"emote": "/chicken",
+		"type": "market"
+	},
+	{
+		"emote": "/child",
+		"type": "market"
+	},
+	{
+		"emote": "/chilly",
+		"type": "market"
+	},
+	{
+		"emote": "/clap",
+		"type": "free"
+	},
+	{
+		"emote": "/clawbirdkick",
+		"type": "market"
+	},
+	{
+		"emote": "/clubdance",
+		"type": "sub"
+	},
+	{
+		"emote": "/comfort",
+		"type": "free"
+	},
+	{
+		"emote": "/commend",
+		"type": "sub"
+	},
+	{
+		"emote": "/confused",
+		"type": "sub"
+	},
+	{
+		"emote": "/congratulate",
+		"type": "free"
+	},
+	{
+		"emote": "/console",
+		"type": "free"
+	},
+	{
+		"emote": "/consular",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/cough",
+		"type": "sub"
+	},
+	{
+		"emote": "/cower",
+		"type": "sub"
+	},
+	{
+		"emote": "/crazytalk",
+		"type": "market"
+	},
+	{
+		"emote": "/cringe",
+		"type": "free"
+	},
+	{
+		"emote": "/crossarms",
+		"type": "sub"
+	},
+	{
+		"emote": "/cry",
+		"type": "sub"
+	},
+	{
+		"emote": "/dance",
+		"type": "free"
+	},
+	{
+		"emote": "/datapad",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/dejarik",
+		"type": "market"
+	},
+	{
+		"emote": "/disappoint",
+		"type": "sub"
+	},
+	{
+		"emote": "/dodge",
+		"type": "market"
+	},
+	{
+		"emote": "/doh",
+		"type": "sub"
+	},
+	{
+		"emote": "/done",
+		"type": "sub"
+	},
+	{
+		"emote": "/doubleguns",
+		"type": "market"
+	},
+	{
+		"emote": "/doublelasers",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/doublethumbs",
+		"type": "sub"
+	},
+	{
+		"emote": "/drink",
+		"type": "sub"
+	},
+	{
+		"emote": "/droid",
+		"type": "market"
+	},
+	{
+		"emote": "/dud",
+		"type": "market"
+	},
+	{
+		"emote": "/eat",
+		"type": "sub"
+	},
+	{
+		"emote": "/empoweredshuffle",
+		"type": "market"
+	},
+	{
+		"emote": "/excited",
+		"type": "sub"
+	},
+	{
+		"emote": "/facepalm",
+		"type": "sub"
+	},
+	{
+		"emote": "/faint",
+		"type": "market"
+	},
+	{
+		"emote": "/farewell",
+		"type": "sub"
+	},
+	{
+		"emote": "/fear",
+		"type": "sub"
+	},
+	{
+		"emote": "/fever",
+		"type": "market"
+	},
+	{
+		"emote": "/fidget",
+		"type": "sub"
+	},
+	{
+		"emote": "/fistpump",
+		"type": "market"
+	},
+	{
+		"emote": "/flagdown",
+		"type": "sub"
+	},
+	{
+		"emote": "/flap",
+		"type": "sub"
+	},
+	{
+		"emote": "/flee",
+		"type": "free"
+	},
+	{
+		"emote": "/flex",
+		"type": "sub"
+	},
+	{
+		"emote": "/flirt",
+		"type": "sub"
+	},
+	{
+		"emote": "/flourish",
+		"type": "market"
+	},
+	{
+		"emote": "/followme",
+		"type": "free"
+	},
+	{
+		"emote": "/freezing",
+		"type": "market"
+	},
+	{
+		"emote": "/fresh",
+		"type": "market"
+	},
+	{
+		"emote": "/frown",
+		"type": "free"
+	},
+	{
+		"emote": "/funky",
+		"type": "market"
+	},
+	{
+		"emote": "/getdown",
+		"type": "sub"
+	},
+	{
+		"emote": "/giggle",
+		"type": "sub"
+	},
+	{
+		"emote": "/giveup",
+		"type": "sub"
+	},
+	{
+		"emote": "/glare",
+		"type": "free"
+	},
+	{
+		"emote": "/gloat",
+		"type": "sub"
+	},
+	{
+		"emote": "/golfclap",
+		"type": "sub"
+	},
+	{
+		"emote": "/goodbye",
+		"type": "sub"
+	},
+	{
+		"emote": "/goodjob",
+		"type": "free"
+	},
+	{
+		"emote": "/greet",
+		"type": "sub"
+	},
+	{
+		"emote": "/grin",
+		"type": "free"
+	},
+	{
+		"emote": "/groan",
+		"type": "sub"
+	},
+	{
+		"emote": "/groove",
+		"type": "market"
+	},
+	{
+		"emote": "/groove2",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/grovel",
+		"type": "sub"
+	},
+	{
+		"emote": "/handstandheelclick",
+		"type": "market"
+	},
+	{
+		"emote": "/happy",
+		"type": "free"
+	},
+	{
+		"emote": "/headbob",
+		"type": "market"
+	},
+	{
+		"emote": "/healme",
+		"type": "free"
+	},
+	{
+		"emote": "/heelclick",
+		"type": "market"
+	},
+	{
+		"emote": "/hello",
+		"type": "free"
+	},
+	{
+		"emote": "/helpme",
+		"type": "sub"
+	},
+	{
+		"emote": "/hey",
+		"type": "sub"
+	},
+	{
+		"emote": "/hipdip",
+		"type": "market"
+	},
+	{
+		"emote": "/holocom",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/holohoop",
+		"type": "market"
+	},
+	{
+		"emote": "/holohoop2",
+		"type": "market"
+	},
+	{
+		"emote": "/hug",
+		"type": "free"
+	},
+	{
+		"emote": "/hungry",
+		"type": "free"
+	},
+	{
+		"emote": "/impatient",
+		"type": "sub"
+	},
+	{
+		"emote": "/incoming",
+		"type": "sub"
+	},
+	{
+		"emote": "/inquisitor",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/insult",
+		"type": "sub"
+	},
+	{
+		"emote": "/intimidate",
+		"type": "market"
+	},
+	{
+		"emote": "/introduce",
+		"type": "sub"
+	},
+	{
+		"emote": "/ironfist",
+		"type": "sub"
+	},
+	{
+		"emote": "/jig",
+		"type": "market"
+	},
+	{
+		"emote": "/joke",
+		"type": "sub"
+	},
+	{
+		"emote": "/joy",
+		"type": "market"
+	},
+	{
+		"emote": "/kiss",
+		"type": "sub"
+	},
+	{
+		"emote": "/kloo",
+		"type": "market"
+	},
+	{
+		"emote": "/kneel",
+		"type": "sub"
+	},
+	{
+		"emote": "/knight",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/laugh",
+		"type": "free"
+	},
+	{
+		"emote": "/lepihop",
+		"type": "market"
+	},
+	{
+		"emote": "/listen",
+		"type": "free"
+	},
+	{
+		"emote": "/look",
+		"type": "free"
+	},
+	{
+		"emote": "/love",
+		"type": "free"
+	},
+	{
+		"emote": "/mad",
+		"type": "sub"
+	},
+	{
+		"emote": "/map",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/meditate",
+		"type": "free"
+	},
+	{
+		"emote": "/menace",
+		"type": "market"
+	},
+	{
+		"emote": "/mindprisonspin",
+		"type": "market"
+	},
+	{
+		"emote": "/mock",
+		"type": "sub"
+	},
+	{
+		"emote": "/mourn",
+		"type": "sub"
+	},
+	{
+		"emote": "/nerfherder",
+		"type": "sub"
+	},
+	{
+		"emote": "/no",
+		"type": "sub"
+	},
+	{
+		"emote": "/nobones",
+		"type": "market"
+	},
+	{
+		"emote": "/nod",
+		"type": "sub"
+	},
+	{
+		"emote": "/nodoff",
+		"type": "market"
+	},
+	{
+		"emote": "/notdroids",
+		"type": "sub"
+	},
+	{
+		"emote": "/observe",
+		"type": "free"
+	},
+	{
+		"emote": "/omg",
+		"type": "market"
+	},
+	{
+		"emote": "/openfire",
+		"type": "sub"
+	},
+	{
+		"emote": "/oor",
+		"type": "free"
+	},
+	{
+		"emote": "/outofbreath",
+		"type": "market"
+	},
+	{
+		"emote": "/overeat",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/overthere",
+		"type": "sub"
+	},
+	{
+		"emote": "/panic",
+		"type": "sub"
+	},
+	{
+		"emote": "/paranoid",
+		"type": "sub"
+	},
+	{
+		"emote": "/pbj",
+		"type": "market"
+	},
+	{
+		"emote": "/peer",
+		"type": "free"
+	},
+	{
+		"emote": "/perform",
+		"type": "market"
+	},
+	{
+		"emote": "/pickaxe",
+		"type": "market"
+	},
+	{
+		"emote": "/pity",
+		"type": "free"
+	},
+	{
+		"emote": "/point",
+		"type": "free"
+	},
+	{
+		"emote": "/pointlaugh",
+		"type": "market"
+	},
+	{
+		"emote": "/poke",
+		"type": "sub"
+	},
+	{
+		"emote": "/ponder",
+		"type": "sub"
+	},
+	{
+		"emote": "/possessed",
+		"type": "market"
+	},
+	{
+		"emote": "/praise",
+		"type": "sub"
+	},
+	{
+		"emote": "/punchdance",
+		"type": "market"
+	},
+	{
+		"emote": "/punt",
+		"type": "market"
+	},
+	{
+		"emote": "/raise",
+		"type": "free"
+	},
+	{
+		"emote": "/raving",
+		"type": "sub"
+	},
+	{
+		"emote": "/ready",
+		"type": "sub"
+	},
+	{
+		"emote": "/recline",
+		"type": "market"
+	},
+	{
+		"emote": "/restless",
+		"type": "market"
+	},
+	{
+		"emote": "/romanceshuffle",
+		"type": "market"
+	},
+	{
+		"emote": "/rude",
+		"type": "sub"
+	},
+	{
+		"emote": "/runningman",
+		"type": "market"
+	},
+	{
+		"emote": "/salsa",
+		"type": "market"
+	},
+	{
+		"emote": "/salute",
+		"type": "sub"
+	},
+	{
+		"emote": "/scangreen",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/scanred",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/search",
+		"type": "market"
+	},
+	{
+		"emote": "/seduce",
+		"type": "sub"
+	},
+	{
+		"emote": "/shakefist",
+		"type": "sub"
+	},
+	{
+		"emote": "/shiver",
+		"type": "free"
+	},
+	{
+		"emote": "/shock",
+		"type": "sub"
+	},
+	{
+		"emote": "/shovel",
+		"type": "market"
+	},
+	{
+		"emote": "/shrug",
+		"type": "free"
+	},
+	{
+		"emote": "/shy",
+		"type": "sub"
+	},
+	{
+		"emote": "/sigh",
+		"type": "free"
+	},
+	{
+		"emote": "/sing",
+		"type": "market"
+	},
+	{
+		"emote": "/sinister",
+		"type": "market"
+	},
+	{
+		"emote": "/sit",
+		"type": "free"
+	},
+	{
+		"emote": "/slap",
+		"type": "sub"
+	},
+	{
+		"emote": "/sleep",
+		"type": "sub"
+	},
+	{
+		"emote": "/slowclap",
+		"type": "market"
+	},
+	{
+		"emote": "/smile",
+		"type": "free"
+	},
+	{
+		"emote": "/smuggler",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/smugglershuffle",
+		"type": "market"
+	},
+	{
+		"emote": "/snicker",
+		"type": "free"
+	},
+	{
+		"emote": "/sorry",
+		"type": "sub"
+	},
+	{
+		"emote": "/spike",
+		"type": "market"
+	},
+	{
+		"emote": "/spit",
+		"type": "sub"
+	},
+	{
+		"emote": "/stare",
+		"type": "free"
+	},
+	{
+		"emote": "/starslide",
+		"type": "market"
+	},
+	{
+		"emote": "/stretch",
+		"type": "sub"
+	},
+	{
+		"emote": "/style",
+		"type": "market"
+	},
+	{
+		"emote": "/superflex",
+		"type": "market"
+	},
+	{
+		"emote": "/surprised",
+		"type": "sub"
+	},
+	{
+		"emote": "/sweep",
+		"type": "market"
+	},
+	{
+		"emote": "/swing",
+		"type": "market"
+	},
+	{
+		"emote": "/talk",
+		"type": "sub"
+	},
+	{
+		"emote": "/tap",
+		"type": "free"
+	},
+	{
+		"emote": "/taunt",
+		"type": "sub"
+	},
+	{
+		"emote": "/tease",
+		"type": "free"
+	},
+	{
+		"emote": "/thank",
+		"type": "free"
+	},
+	{
+		"emote": "/think",
+		"type": "market"
+	},
+	{
+		"emote": "/thirsty",
+		"type": "free"
+	},
+	{
+		"emote": "/thrash",
+		"type": "market"
+	},
+	{
+		"emote": "/threaten",
+		"type": "sub"
+	},
+	{
+		"emote": "/thumbsdown",
+		"type": "free"
+	},
+	{
+		"emote": "/thumbsup",
+		"type": "free"
+	},
+	{
+		"emote": "/tickle",
+		"type": "free"
+	},
+	{
+		"emote": "/tihaar",
+		"type": "market"
+	},
+	{
+		"emote": "/tired",
+		"type": "sub"
+	},
+	{
+		"emote": "/toast",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/toetouch",
+		"type": "market"
+	},
+	{
+		"emote": "/traditional",
+		"type": "market"
+	},
+	{
+		"emote": "/trooper",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/typing",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/victory",
+		"type": "sub"
+	},
+	{
+		"emote": "/victorywave",
+		"type": "market"
+	},
+	{
+		"emote": "/wait",
+		"type": "sub"
+	},
+	{
+		"emote": "/waltz",
+		"type": "market"
+	},
+	{
+		"emote": "/warmup",
+		"type": "sub"
+	},
+	{
+		"emote": "/warrior",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/wave",
+		"type": "free"
+	},
+	{
+		"emote": "/welcome",
+		"type": "sub"
+	},
+	{
+		"emote": "/weld",
+		"type": "unlocked"
+	},
+	{
+		"emote": "/whatup",
+		"type": "market"
+	},
+	{
+		"emote": "/whatup2",
+		"type": "market"
+	},
+	{
+		"emote": "/whine",
+		"type": "free"
+	},
+	{
+		"emote": "/whistle",
+		"type": "free"
+	},
+	{
+		"emote": "/wicked",
+		"type": "free"
+	},
+	{
+		"emote": "/wink",
+		"type": "free"
+	},
+	{
+		"emote": "/woohoo",
+		"type": "market"
+	},
+	{
+		"emote": "/woot",
+		"type": "sub"
+	},
+	{
+		"emote": "/worthy",
+		"type": "market"
+	},
+	{
+		"emote": "/xantha",
+		"type": "market"
+	},
+	{
+		"emote": "/yawn",
+		"type": "sub"
+	},
+	{
+		"emote": "/yes",
+		"type": "free"
+	},
+	{
+		"emote": "/yippee",
+		"type": "market"
+	},
+	{
+		"emote": "/alarmed",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/angered",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/annoyed",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/astounded",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/awed",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/cheery",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/cobalt",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/creepy",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/crying",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/dejected",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/depressed",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/discomforted",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/disdained",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/eager",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/ecstatic",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/enraged",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/fearful",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/flattered",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/frustrated",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/furious",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/goofy",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/hurt",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/jawaface",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/joyful",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/meditative",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/mournful",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/neutral",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/outraged",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/pained",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/pout",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/saddened",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/scowling",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/sly",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/snide",
+		"type": "market",
+		"moode": true
+	},
+	{
+		"emote": "/stunned",
+		"type": "free",
+		"moode": true
+	},
+	{
+		"emote": "/terrified",
+		"type": "market",
+		"moode": true
+	}
+]

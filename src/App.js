@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Main from './screens/Main/Main';
+import Browse from './screens/Browse/Browse';
+import ViewProfile from './screens/ViewProfile/ViewProfile';
+import Helper from './screens/Helper/Helper';
+import Null from './screens/Null/Null';
+
+import ModalManager from './screens/ModalManager/ModalManager';
+
+import { getUrlBase } from './util';
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter basename={getUrlBase()}>
+        <Routes>
+          <Route path="/" element={<Main />}>
+            <Route index element={<Browse />}></Route>
+            <Route path="view/:server?/:characterName" element={<ViewProfile />}></Route>
+            <Route path="helper" element={<Helper />}></Route>
+            <Route path="*" element={<Null />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <ModalManager />
+    </>
   );
 }
 
