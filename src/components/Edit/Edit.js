@@ -63,7 +63,7 @@ function createBaseProfile(user) {
 	}
 }
 
-function Edit({ create, user, metadata, profileData, leaveFunc, saveFunc, deleteFunc }) {
+function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, deleteFunc }) {
 	const [ changed, setChanged ] = useState(false);
 	const [ workingMetadata, setWorkingMetadata ] = useState(create ? createBaseMetadata(user) : metadata);
 	const [ workingProfile, setWorkingProfile ] = useState(create ? createBaseProfile(user) : profileData);
@@ -318,7 +318,7 @@ function Edit({ create, user, metadata, profileData, leaveFunc, saveFunc, delete
 		return <div className="quickbar">
 			<div>
 				<button className="button-minimal" aria-label={localize("LABEL_PREVIEW")} title={localize("LABEL_PREVIEW")} onClick={showPreview}><FontAwesomeIcon icon={faImagePortrait} /></button>
-				<button className="button-minimal" aria-label={localize("LABEL_SAVE")} title={localize("LABEL_SAVE")} disabled={!changed || !validateCharacter()} onClick={saveCharacter}><FontAwesomeIcon icon={faFloppyDisk} /></button>
+				<button className="button-minimal" aria-label={localize("LABEL_SAVE")} title={localize("LABEL_SAVE")} disabled={demo || !changed || !validateCharacter()} onClick={saveCharacter}><FontAwesomeIcon icon={faFloppyDisk} /></button>
 			</div>
 			<button className="button-minimal" aria-label={localize("LABEL_EDIT_LEAVE")} title={localize("LABEL_EDIT_LEAVE")} onClick={tryLeaveEditMode}><FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
 		</div>
