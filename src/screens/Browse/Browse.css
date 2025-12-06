@@ -125,7 +125,6 @@
 	flex-grow: 1;
 	justify-content: space-around;
 	overflow-x: hidden;
-	padding-left: 20px;
 }
 
 #browse .character-profile .profile-holder {

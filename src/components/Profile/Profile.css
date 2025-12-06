@@ -91,14 +91,17 @@
 	margin: 0;
 }
 
+#profile .current-page section + section {
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
 #profile .itemized-container {
-	border-bottom: solid 1px;
 	margin-top: 20px;
 	max-width: 1000px;
 }
 
 #profile .itemized-container h3 {
-	border-bottom: solid 1px;
 	padding-bottom: 4px;
 }
 
@@ -126,18 +129,14 @@
 	border-color: #43cef7;
 }
 
-.republic #profile .itemized-container, .republic #profile .itemized-container h3 {
-	border-color: #003660;
-}
-
 .republic #profile .current-page, .republic #profile .current-page section + section {
-	border-top: solid 1px #003660;
+	border-top: solid 1px rgba(0, 28, 48, 0.5);
 }
 
-.empire #profile .character-info .character-image, .empire #profile .itemized-container, .empire #profile .itemized-container h3 {
-	border-color: #300000;
+.empire #profile .character-info .character-image {
+	border-color: #180000;
 }
 
 .empire #profile .current-page, .empire #profile .current-page section + section {
-	border-top: solid 1px #300000;
+	border-top: solid 1px #180000;
 }

@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import {
 	MDXEditor,
 	headingsPlugin,
-	imagePlugin,
 	linkPlugin,
 	linkDialogPlugin,
 	listsPlugin,
@@ -47,7 +46,6 @@ function MarkdownTextArea({ placeholder, maxLength = 1000, value, onBlur, onChan
 		plugins={[
 			maxLengthPlugin(maxLength),
 			headingsPlugin(),
-			imagePlugin(),
 			linkPlugin(),
 			linkDialogPlugin(),
 			listsPlugin(),
@@ -59,7 +57,6 @@ function MarkdownTextArea({ placeholder, maxLength = 1000, value, onBlur, onChan
 						<div>
 							<BoldItalicUnderlineToggles />
 							<CreateLink />
-							<InsertImage />
 							<InsertThematicBreak />
 							<UndoRedo />
 						</div>

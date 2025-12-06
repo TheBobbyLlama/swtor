@@ -17,7 +17,6 @@ import { getUrlBase } from "../../util";
 import { dbTransform } from "../../util";
 
 import "./Browse.css";
-import dbUtil from "../../db/util";
 
 function Browse() {
 	const ref = useRef(null);
@@ -112,9 +111,9 @@ function Browse() {
 		window.open(`${getUrlBase()}/helper`);
 	}
 
-	const setFilterByUser = (user) => {
-		dispatch(charActions.setListFilter({ users: [ user ] }));
-	}
+	// const setFilterByUser = (user) => {
+	// 	dispatch(charActions.setListFilter({ users: [ user ] }));
+	// }
 
 	const goCharacterProfile = () => {
 		if (curCharacter) {

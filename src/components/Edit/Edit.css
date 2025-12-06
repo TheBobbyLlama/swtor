@@ -16,10 +16,17 @@
 #edit h1 {
 	align-items: center;
 	display: flex;
+	margin-top: 0.75rem;
 }
 
 #edit h4 {
 	margin-top: 20px;
+}
+
+.edit-holder {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
 
 #edit section + h3 {
@@ -117,15 +124,30 @@
 	right: 0;
 }
 
-.edit-holder {
-	padding-bottom: 20px;
-}
-
 #edit h1 > input[type='text'] {
 	font-size: 2rem;
-	margin-top: 0.75rem;
 	max-width: calc(100vw - 5rem);
 	text-align: center;
+	width: 100%;
+}
+
+#edit .create-header {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	width: 100%;
+}
+
+#edit .create-header > input[type='text'] {
+	width: 500px;
+}
+
+.page-holder {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 	width: 100%;
 }
 

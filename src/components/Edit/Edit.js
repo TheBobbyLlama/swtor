@@ -291,7 +291,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 	const validateCharacterImage = (e) => {
 		const newValue = e.target.value;
 
-		if (newValue.match(/^(https?:\/\/)?[A-Za-z0-9-_]+\.[A-Za-z0-9-_.]+[A-Za-z0-9](\/[A-Za-z0-9-_]+)*\/[A-Za-z0-9-_.]+(\.[Bb][Mm][Pp]|\.[Gg][Ii][Ff]|\.[Jj][Pp][Gg]|\.[Pp][Nn][Gg])(\?[\w=&]+)*$/g)) {
+		if ((!newValue) || (newValue.match(/^(https?:\/\/)?[A-Za-z0-9-_]+\.[A-Za-z0-9-_.]+[A-Za-z0-9](\/[A-Za-z0-9-_]+)*\/[A-Za-z0-9-_.]+(\.[Bb][Mm][Pp]|\.[Gg][Ii][Ff]|\.[Jj][Pp][Gg]|\.[Pp][Nn][Gg])(\?[\w=&]+)*$/g))) {
 			e.target.classList.remove("invalid")
 		} else {
 			e.target.classList.add("invalid");
@@ -342,11 +342,13 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 	return <><div id="edit" className="panel">
 		<Quickbar />
 		{create && <>
-			<h1><input name="metadata.name" type="text" className={!workingMetadata.name ? "error" : ""} maxLength={50} placeholder={localize("LABEL_CREATE_CHARACTER_NAME")} value={workingMetadata.name || ""} onChange={editCharacter}></input></h1>
-			<select name="metadata.faction" value={workingMetadata.faction} onChange={editCharacter}>
-				<option value="FACTION_EMPIRE">{localize("FACTION_EMPIRE")}</option>
-				<option value="FACTION_REPUBLIC">{localize("FACTION_REPUBLIC")}</option>
-			</select>
+			<h1 className="create-header">
+				<input name="metadata.name" type="text" className={!workingMetadata.name ? "error" : ""} maxLength={50} placeholder={localize("LABEL_CREATE_CHARACTER_NAME")} value={workingMetadata.name || ""} onChange={editCharacter}></input>
+				<select name="metadata.faction" value={workingMetadata.faction} onChange={editCharacter}>
+					<option value="FACTION_EMPIRE">{localize("FACTION_EMPIRE")}</option>
+					<option value="FACTION_REPUBLIC">{localize("FACTION_REPUBLIC")}</option>
+				</select>
+			</h1>
 		</>}
 		{!create && <h1>
 			<div><label>{localize("LABEL_EDITING")}</label>{metadata.name}</div>
@@ -354,7 +356,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 		</h1>}
 		<h3>{localize("LABEL_CHARACTER_IMAGE")}</h3>
 		<section className="character-image">
-			<div className="image-demo" style={{ background: `url('${workingProfile.image}')`}} />
+			<div className="image-demo" style={workingProfile.image && { background: `url('${workingProfile.image}')`}} />
 			<div>
 				<textarea name="profile.image" placeholder={localize("LABEL_CHARACTER_IMAGE_HELPER")} maxLength={10000} value={workingProfile.image} onChange={validateCharacterImage} />
 			</div>
@@ -380,7 +382,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			<div>
 				<label>{localize("LABEL_HOMEWORLD")}:</label>
 				<div>
-					<MarkDownInput maxLength={100} value={workingMetadata.homeworld || ""} onChange={(e) => editCharacter(e, "metadata.homeworld")} />
+					<MarkDownInput maxLength={100} placeholder=" " value={workingMetadata.homeworld || ""} onChange={(e) => editCharacter(e, "metadata.homeworld")} />
 				</div>
 			</div>
 			<div>
@@ -415,7 +417,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			}));
 		}
 
-		return <div key={`p${page.key}${index}`}>
+		return <div className="page-holder" key={`p${page.key}${index}`}>
 			<div className="edit-button-row"><button onClick={() => updatePage("addPage", index)}>Add Page</button></div>
 			<div key={`page.${index}`} className="panel edit-page">
 				<Quickbar />

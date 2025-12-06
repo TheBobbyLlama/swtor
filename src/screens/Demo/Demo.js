@@ -4,7 +4,9 @@ import Edit from "../../components/Edit/Edit";
 
 function Demo () {
 	const navigate = useNavigate();
-	return <Edit create={true} demo={true} user={{ displayName: "DemoUser", uid: 42069 }} leaveFunc={() => navigate("/")} />
+	return <div className="edit-holder">
+		<Edit create={true} demo={true} user={{ displayName: "Demo", uid: 42069 }} leaveFunc={() => navigate("/")} />
+	</div>;
 }
 
 export default Demo;

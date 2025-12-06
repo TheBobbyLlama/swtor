@@ -100,6 +100,11 @@ h1 label {
   font-weight: bold;
 }
 
+hr {
+	border-bottom-width: 0px;
+	border-style: solid;
+}
+
 iframe {
 	border-radius: 8px;
 }
@@ -112,6 +117,10 @@ input[type='email'], input[type='password'], input[type='text'], input[type='url
 	color: #c0a040 !important;
 	padding: 4px 8px;
 	resize: none;
+}
+
+.mdxeditor hr {
+	border-color: #403810 !important;
 }
 
 label {

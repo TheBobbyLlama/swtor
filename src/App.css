@@ -59,8 +59,7 @@
 }
 
 .republic hr {
-  border-color: #003660;
-  color: #003660;
+  border-color: rgba(0, 28, 48, 0.5);
 }
 
 .republic iframe {
@@ -77,11 +76,11 @@
 }
 
 .republic .table-holder table, .republic .table-holder td {
-  border: solid 1px #003660;
+  border: solid 1px rgba(0, 28, 48, 0.5);
 }
 
 .republic .table-holder th {
-  background-color: #003660;
+  background-color: rgba(0, 28, 48, 0.5);
 }
 
 .empire a:link {
@@ -105,8 +104,7 @@
 }
 
 .empire hr {
-  border-color: #300000;
-  color: #300000;
+  border-color: #180000;
 }
 
 .empire iframe {
@@ -123,9 +121,9 @@
 }
 
 .emipre .table-holder table, .empire .table-holder td {
-  border: solid 1px #300000;
+  border: solid 1px rgba(24, 0, 0, 0.5);
 }
 
 .empire .table-holder th {
-  background-color: #300000;
+  background-color: rgba(24, 0, 0, 0.5);
 }

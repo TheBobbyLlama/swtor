@@ -22,12 +22,12 @@ function renderSection(section, index) {
 				return null;
 			}
 		case "itemized":
-			return <div className="itemized-container" key={index}>
+			return <section className="itemized-container" key={index}>
 				{section.heading && <h3><MarkdownView markdown={section.heading} /></h3>}
 				<div className="itemized">
 					{section.items.map(item => <MarkdownView key={item} markdown={item} />)}
 				</div>
-			</div>;
+			</section>;
 		case "table":
 			const width = Math.max(section.headers.length, section.data.reduce((result, current) => { return Math.max(result, current.length)}, section.data[0]?.length || 0));
 			const generateHeaders = () => {
@@ -74,7 +74,7 @@ function Profile({ metadata, profileData }) {
 	const fadeTransition = useFade(panelRef);
 	const [ curMetadata, setMetadata ] = useState(metadata);
 	const [ curProfileData, setProfileData ] = useState(profileData);
-	const [ curPage, setCurPage ] = useState();
+	const [ curPage, setCurPage ] = useState(-1);
 
 	useEffect(() => {
 		fadeTransition(() => {
@@ -87,7 +87,7 @@ function Profile({ metadata, profileData }) {
 		});
 	}, [metadata]);
 
-	const pageData = curProfileData.pages.find(page => page.title === curPage);
+	const pageData = curProfileData.pages[curPage];
 
 	const changePage = (page) => {
 		setCurPage(page);
@@ -126,9 +126,9 @@ function Profile({ metadata, profileData }) {
 			</tbody></table>
 		</div>
 		<div className="button-row">
-			{curProfileData.pages.map(page => <button key={page.title} onClick={() => changePage(page.title)} disabled={curPage === page.title}>{page.title}</button>)}
+			{curProfileData.pages.map((page, index) => <button key={`${index}:${page.title}`} onClick={() => changePage(index)} disabled={curPage === page.title}>{page.title}</button>)}
 		</div>
-		{curPage && <div className="current-page" ref={pageRef}>
+		{curPage > -1 && <div className="current-page" ref={pageRef}>
 			<h2>{pageData.title}</h2>
 			{pageData.sections.map(renderSection)}
 		</div>}
