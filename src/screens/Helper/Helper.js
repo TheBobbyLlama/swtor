@@ -41,6 +41,8 @@ function convertTextToOutput(input, connector) {
 	let textPrefix = "/s ";
 	const textChunks = [];
 
+	if (!input) return textChunks;
+
 	// Determine which slash prefix we should be using.
 	if (input.startsWith("/")) {
 		textPrefix = input.substring(0, input.indexOf(" ") + 1);
@@ -88,15 +90,19 @@ function convertTextToOutput(input, connector) {
 	// Finally, grab the last piece.
 	textChunks.push(input.substring(start));
 
-	for (let i = 0; i < textChunks.length; i++) {
-		if ((i === 0) && (textChunks.length > 1)) {
-			textChunks[i] = `${textPrefix}${textChunks[i]}${connector.end}`;
-		} else if (i > 0) {
-			if (i === textChunks.length - 1)
-				textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}`;
-			else
-				textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}${connector.end}`;
-		} 
+	if (textChunks.length === 1) {
+		textChunks[0] = `${textPrefix}${textChunks[0]}`;
+	} else {
+		for (let i = 0; i < textChunks.length; i++) {
+			if ((i === 0) && (textChunks.length > 1)) {
+				textChunks[i] = `${textPrefix}${textChunks[i]}${connector.end}`;
+			} else if (i > 0) {
+				if (i === textChunks.length - 1)
+					textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}`;
+				else
+					textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}${connector.end}`;
+			}
+		}
 	}
 
 	return textChunks;
