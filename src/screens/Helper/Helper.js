@@ -38,7 +38,7 @@ const connectorOptions = [
 ];
 
 function convertTextToOutput(input, connector) {
-	let textPrefix = "/s";
+	let textPrefix = "/s ";
 	const textChunks = [];
 
 	// Determine which slash prefix we should be using.
@@ -90,12 +90,12 @@ function convertTextToOutput(input, connector) {
 
 	for (let i = 0; i < textChunks.length; i++) {
 		if ((i === 0) && (textChunks.length > 1)) {
-			textChunks[i] = `${textChunks[i]}${connector.end}`;
+			textChunks[i] = `${textPrefix}${textChunks[i]}${connector.end}`;
 		} else if (i > 0) {
 			if (i === textChunks.length - 1)
-				textChunks[i] = `${connector.start}${textChunks[i]}`;
+				textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}`;
 			else
-				textChunks[i] = `${connector.start}${textChunks[i]}${connector.end}`;
+				textChunks[i] = `${textPrefix}${connector.start}${textChunks[i]}${connector.end}`;
 		} 
 	}
 
@@ -146,6 +146,10 @@ function Helper() {
 		const selection = e.target.value;
 		setConnector(connectorOptions.find(con => con.label === selection));
 		localStorage.setItem("SWTOR_Connector", selection);
+	}
+
+	const copyOutputPage = () => {
+		navigator.clipboard.writeText(textOutput[outputPage]);
 	}
 
 	const updateNotes = (v) => {
@@ -202,6 +206,7 @@ function Helper() {
 						<label> {outputPage + 1}/{textOutput.length} </label>
 						<button className="button-small" disabled={!textOutput.length || outputPage >= textOutput.length - 1} onClick={() => setOutputPage(outputPage + 1)}>{">"}</button>
 					</div>
+					<button className="button-small" disabled={!textOutput.length} onClick={copyOutputPage}>{localize("LABEL_COPY")}</button>
 				</div>
 			</div>
 		</div>
