@@ -16,10 +16,7 @@
 #helper nav {
 	display: flex;
 	gap: 4px;
-	margin: 10px;
-	/* left: 10px;
-	position: absolute;
-	top: 10px; */
+	margin: 10px 20px 10px 10px;
 }
 
 #helper select {
@@ -106,8 +103,8 @@
 #helper .output-holder > *:last-child {
 	align-items: center;
 	display: flex;
-	gap: 40px;
-	justify-content: center;
+	gap: 10px;
+	justify-content: space-evenly;
 	padding-top: 20px;
 	user-select: none;
 }
@@ -369,4 +366,10 @@
 #helper .closed > .close-button > button {
 	display: inline-flex !important;
 	padding-top: 3px;
+}
+
+@media screen and (max-width: 800px) {
+	#helper .text-section {
+		display: none;
+	}
 }

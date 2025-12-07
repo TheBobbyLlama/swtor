@@ -114,7 +114,7 @@ function convertTextToOutput(input, connector) {
 function Helper({ equinox }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
-	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem("SWTOR_Panels") || 16);
+	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem(("SWTOR_Panels") || 0) | 16); // Document panel always starts closed
 	const [ textInput, setTextInput ] = useState("");
 	const [ textOutput, setTextOutput ] = useState([]);
 	const [ connector, setConnector ] = useState(connectorOptions.find(con => con.label === localStorage.getItem("SWTOR_Connector")) || connectorOptions[0]);
@@ -273,77 +273,77 @@ function Helper({ equinox }) {
 							<th>Bonus</th>
 						</tr>
 						<tr>
-							<td class="pub-only">Citizen/Adept/Initiate/Cadet/Private (E1 & E2)</td>
-							<td class="imp-only">Citizen/Initiate/Acolyte/Cadet/Private (E1 & E2)</td>
+							<td className="pub-only">Citizen/Adept/Initiate/Cadet/Private (E1 & E2)</td>
+							<td className="imp-only">Citizen/Initiate/Acolyte/Cadet/Private (E1 & E2)</td>
 							<td>2</td>
 							<td>d20</td>
 							<td>+0</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Padawan/Specialist (E3)</td>
-							<td class="imp-only">Apprentice/Sergeant (E3)</td>
+							<td className="pub-only">Padawan/Specialist (E3)</td>
+							<td className="imp-only">Apprentice/Sergeant (E3)</td>
 							<td>3</td>
 							<td>d20</td>
 							<td>+2</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Knight/Corporal (O1)</td>
-							<td class="imp-only">Lord/Lieutenant (O1)</td>
+							<td className="pub-only">Knight/Corporal (O1)</td>
+							<td className="imp-only">Lord/Lieutenant (O1)</td>
 							<td>4</td>
 							<td>d25</td>
 							<td>+5</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Knight I/Sergeant (O2)</td>
-							<td class="imp-only">Lord I/Captain (O2)</td>
+							<td className="pub-only">Knight I/Sergeant (O2)</td>
+							<td className="imp-only">Lord I/Captain (O2)</td>
 							<td>4</td>
 							<td>d25</td>
 							<td>+7</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Knight II/Ensign (O3)</td>
-							<td class="imp-only">Lord II/Colonel (O3)</td>
+							<td className="pub-only">Knight II/Ensign (O3)</td>
+							<td className="imp-only">Lord II/Colonel (O3)</td>
 							<td>4</td>
 							<td>d25</td>
 							<td>+9</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Master/Major (O4)</td>
-							<td class="imp-only">Darth/Moff (O4)</td>
+							<td className="pub-only">Master/Major (O4)</td>
+							<td className="imp-only">Darth/Moff (O4)</td>
 							<td>5</td>
 							<td>d30</td>
 							<td>+15</td>
 						</tr>
 						<tr>
-							<td class="pub-only">Jedi Councilor/General (O5)</td>
-							<td class="imp-only">Dark Councilor/Grand Moff (O5)</td>
+							<td className="pub-only">Jedi Councilor/General (O5)</td>
+							<td className="imp-only">Dark Councilor/Grand Moff (O5)</td>
 							<td>6</td>
 							<td>d40</td>
 							<td>+20</td>
 						</tr>
 						<tr>
-							<td class="imp-only">High Councilor (O6)</td>
-							<td class="imp-only">7</td>
-							<td class="imp-only">d40</td>
-							<td class="imp-only">+22</td>
+							<td className="imp-only">High Councilor (O6)</td>
+							<td className="imp-only">7</td>
+							<td className="imp-only">d40</td>
+							<td className="imp-only">+22</td>
 						</tr>
 						<tr>
-							<td class="imp-only">Wrath (O7)</td>
-							<td class="imp-only">7</td>
-							<td class="imp-only">d45</td>
-							<td class="imp-only">+25</td>
+							<td className="imp-only">Wrath (O7)</td>
+							<td className="imp-only">7</td>
+							<td className="imp-only">d45</td>
+							<td className="imp-only">+25</td>
 						</tr>
 						<tr>
-							<td class="imp-only">Voice (O8)</td>
-							<td class="imp-only">10</td>
-							<td class="imp-only">d50</td>
-							<td class="imp-only">+30</td>
+							<td className="imp-only">Voice (O8)</td>
+							<td className="imp-only">10</td>
+							<td className="imp-only">d50</td>
+							<td className="imp-only">+30</td>
 						</tr>
 						<tr>
-							<td class="imp-only">Emperor (GM)</td>
-							<td class="imp-only">15</td>
-							<td class="imp-only">d65</td>
-							<td class="imp-only">+35</td>
+							<td className="imp-only">Emperor (GM)</td>
+							<td className="imp-only">15</td>
+							<td className="imp-only">d65</td>
+							<td className="imp-only">+35</td>
 						</tr>
 					</tbody></table>
 				</div>}
