@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import MarkdownTextArea from "../../components/Markdown/MarkdownTextArea";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome} from "@fortawesome/free-solid-svg-icons";
 
 import useFade from "../../hooks/useFade";
 import { localize } from "../../localization";
@@ -111,13 +114,14 @@ function convertTextToOutput(input, connector) {
 function Helper({ equinox }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
-	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem("SWTOR_Panels") || 0);
+	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem("SWTOR_Panels") || 16);
 	const [ textInput, setTextInput ] = useState("");
 	const [ textOutput, setTextOutput ] = useState([]);
 	const [ connector, setConnector ] = useState(connectorOptions.find(con => con.label === localStorage.getItem("SWTOR_Connector")) || connectorOptions[0]);
 	const [ outputPage, setOutputPage ] = useState(0);
 	const [ notes, setNotes ] = useState(localStorage.getItem("SWTOR_Notes") || "");
 	const [ excludedEmotes, setExcludedEmotes ] = useState(JSON.parse(localStorage.getItem("SWTOR_Emotes")) || []);
+	const navigate = useNavigate();
 	useFade(ref);
 
 	useEffect(() => {
@@ -128,6 +132,10 @@ function Helper({ equinox }) {
 	useEffect(() => {
 		setTextOutput(convertTextToOutput(textInput, connector));
 	}, [connector])
+
+	const goHome = () => {
+		navigate("/");
+	}
 
 	const changeMode = (mode) => {
 		setCurMode(mode);
@@ -178,11 +186,14 @@ function Helper({ equinox }) {
 
 	return <div id="helper" className="fade fade-out" ref={ref}>
 		<header>
-			<nav>
-				<button className="button-republic" aria-label="Republic view" onClick={() => changeMode("republic")}></button>
-				<button className="button-empire" aria-label="Empire view" onClick={() => changeMode("empire")}></button>
-			</nav>
+			<div>
+				<button className="button-minimal" aria-label={localize("LABEL_GO_HOME")} title={localize("LABEL_GO_HOME")} onClick={goHome}><FontAwesomeIcon icon={faHome} /></button>
+			</div>
 			<h1>{localize("LABEL_RP_HELPER")}</h1>
+			<nav>
+				<button className="button-republic" aria-label={localize("FACTION_REPUBLIC")} title={localize("FACTION_REPUBLIC")} onClick={() => changeMode("republic")}></button>
+				<button className="button-empire" aria-label={localize("FACTION_EMPIRE")} title={localize("FACTION_EMPIRE")} onClick={() => changeMode("empire")}></button>
+			</nav>
 		</header>
 		<div className={`panel text-section${panelStatus & 1 ? " closed" : ""}`}>
 			<div className="close-button">

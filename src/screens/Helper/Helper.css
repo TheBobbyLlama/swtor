@@ -6,12 +6,20 @@
 	width: 100%;
 }
 
+#helper header {
+	align-items: flex-start;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
 #helper nav {
 	display: flex;
 	gap: 4px;
-	left: 10px;
+	margin: 10px;
+	/* left: 10px;
 	position: absolute;
-	top: 10px;
+	top: 10px; */
 }
 
 #helper select {
