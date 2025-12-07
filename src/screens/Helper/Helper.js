@@ -108,7 +108,7 @@ function convertTextToOutput(input, connector) {
 	return textChunks;
 }
 
-function Helper() {
+function Helper({ equinox }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
 	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem("SWTOR_Panels") || 0);
@@ -228,28 +228,114 @@ function Helper() {
 				<button type="button" className="button-small" onClick={() => togglePanel(4)}>{panelStatus & 4 ? "+" : "-"}</button>
 			</div>
 			<h2>{localize("LABEL_CHEATSHEETS")}</h2>
-			<div className="code-holder">
-				<div>
-					<h3>{localize("CODE_JEDI")}</h3>
-					<div className="code jedi">
-						<p>{localize("CODE_JEDI_1")}</p>
-						<p>{localize("CODE_JEDI_2")}</p>
-						<p>{localize("CODE_JEDI_3")}</p>
-						<p>{localize("CODE_JEDI_4")}</p>
-						<p>{localize("CODE_JEDI_5")}</p>
+			<div className="cheatsheet-content">
+				<div className="code-holder">
+					<div>
+						<h3>{localize("CODE_JEDI")}</h3>
+						<div className="code jedi">
+							<p>{localize("CODE_JEDI_1")}</p>
+							<p>{localize("CODE_JEDI_2")}</p>
+							<p>{localize("CODE_JEDI_3")}</p>
+							<p>{localize("CODE_JEDI_4")}</p>
+							<p>{localize("CODE_JEDI_5")}</p>
+						</div>
+					</div>
+					<div>
+						<h3>{localize("CODE_SITH")}</h3>
+						<div className="code sith">
+							<p>{localize("CODE_SITH_1")}</p>
+							<p>{localize("CODE_SITH_2")}</p>
+							<p>{localize("CODE_SITH_3")}</p>
+							<p>{localize("CODE_SITH_4")}</p>
+							<p>{localize("CODE_SITH_5")}</p>
+							<p>{localize("CODE_SITH_6")}</p>
+						</div>
 					</div>
 				</div>
-				<div>
-					<h3>{localize("CODE_SITH")}</h3>
-					<div className="code sith">
-						<p>{localize("CODE_SITH_1")}</p>
-						<p>{localize("CODE_SITH_2")}</p>
-						<p>{localize("CODE_SITH_3")}</p>
-						<p>{localize("CODE_SITH_4")}</p>
-						<p>{localize("CODE_SITH_5")}</p>
-						<p>{localize("CODE_SITH_6")}</p>
-					</div>
-				</div>
+				{equinox && <div className="table-holder">
+					<h3>Rank Table</h3>
+					<table><tbody>
+						<tr>
+							<th>Rank Name</th>
+							<th>HP</th>
+							<th>Die</th>
+							<th>Bonus</th>
+						</tr>
+						<tr>
+							<td class="pub-only">Citizen/Adept/Initiate/Cadet/Private (E1 & E2)</td>
+							<td class="imp-only">Citizen/Initiate/Acolyte/Cadet/Private (E1 & E2)</td>
+							<td>2</td>
+							<td>d20</td>
+							<td>+0</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Padawan/Specialist (E3)</td>
+							<td class="imp-only">Apprentice/Sergeant (E3)</td>
+							<td>3</td>
+							<td>d20</td>
+							<td>+2</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Knight/Corporal (O1)</td>
+							<td class="imp-only">Lord/Lieutenant (O1)</td>
+							<td>4</td>
+							<td>d25</td>
+							<td>+5</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Knight I/Sergeant (O2)</td>
+							<td class="imp-only">Lord I/Captain (O2)</td>
+							<td>4</td>
+							<td>d25</td>
+							<td>+7</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Knight II/Ensign (O3)</td>
+							<td class="imp-only">Lord II/Colonel (O3)</td>
+							<td>4</td>
+							<td>d25</td>
+							<td>+9</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Master/Major (O4)</td>
+							<td class="imp-only">Darth/Moff (O4)</td>
+							<td>5</td>
+							<td>d30</td>
+							<td>+15</td>
+						</tr>
+						<tr>
+							<td class="pub-only">Jedi Councilor/General (O5)</td>
+							<td class="imp-only">Dark Councilor/Grand Moff (O5)</td>
+							<td>6</td>
+							<td>d40</td>
+							<td>+20</td>
+						</tr>
+						<tr>
+							<td class="imp-only">High Councilor (O6)</td>
+							<td class="imp-only">7</td>
+							<td class="imp-only">d40</td>
+							<td class="imp-only">+22</td>
+						</tr>
+						<tr>
+							<td class="imp-only">Wrath (O7)</td>
+							<td class="imp-only">7</td>
+							<td class="imp-only">d45</td>
+							<td class="imp-only">+25</td>
+						</tr>
+						<tr>
+							<td class="imp-only">Voice (O8)</td>
+							<td class="imp-only">10</td>
+							<td class="imp-only">d50</td>
+							<td class="imp-only">+30</td>
+						</tr>
+						<tr>
+							<td class="imp-only">Emperor (GM)</td>
+							<td class="imp-only">15</td>
+							<td class="imp-only">d65</td>
+							<td class="imp-only">+35</td>
+						</tr>
+					</tbody></table>
+				</div>}
 			</div>
 		</div>
 		<div className={`panel${panelStatus & 8 ? " closed" : ""}`}>
@@ -257,7 +343,6 @@ function Helper() {
 				<button type="button" className="button-small" onClick={() => togglePanel(8)}>{panelStatus & 8 ? "+" : "-"}</button>
 			</div>
 			<h2><a href="https://swtorista.com/emotes/" target="_blank">{localize("LABEL_EMOTES")}</a></h2>
-			<h2 className="show-closed">{localize("LABEL_EMOTES")}</h2>
 			<div className="emote-display">
 				<div className="emote-header">
 					<div><strong>{localize("LABEL_EMOTE_TYPES")}</strong> <em>{localize("LABEL_EMOTE_TYPES_HELPER")}</em></div>
@@ -276,6 +361,13 @@ function Helper() {
 				</div>
 			</div>
 		</div>
+		{equinox && <div className={`panel${panelStatus & 16 ? " closed" : ""}`}>
+			<div className="close-button">
+				<button type="button" className="button-small" onClick={() => togglePanel(16)}>{panelStatus & 16 ? "+" : "-"}</button>
+			</div>
+			<h2><a href="https://docs.google.com/document/d/1sh0sWuoRm01HJfOQPhoAQerm_eYuuqzMsgAgRJgtC2A/preview?tab=t.0#heading=h.n75654wmgaeq" target="blank">Guild Documentation</a></h2>
+			{((panelStatus & 16) === 0) && <iframe src="https://docs.google.com/document/d/1sh0sWuoRm01HJfOQPhoAQerm_eYuuqzMsgAgRJgtC2A/preview?tab=t.0#heading=h.n75654wmgaeq"></iframe>}
+		</div>}
 	</div>;
 }
 

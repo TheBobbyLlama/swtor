@@ -114,6 +114,12 @@
 	height: 300px;
 }
 
+#helper .cheatsheet-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+}
+
 #helper .code-holder {
 	background-color: #040810;
 	background-image: linear-gradient(#040810, #081028);
@@ -230,6 +236,16 @@
 	padding: 2px 8px;
 }
 
+#helper iframe {
+	max-width: 900px;
+	min-height: 400px;
+	width: 100%;
+}
+
+#helper .imp-only, #helper .pub-only {
+	display: none;
+}
+
 .empire #helper .button-republic::after {
 	display: none;
 }
@@ -298,6 +314,10 @@
 	border: solid 2px #43cef7;
 }
 
+.republic #helper .pub-only {
+	display: table-cell;
+}
+
 .empire #helper .emote-table > div > div:not(:last-child) {
 	border-right: solid 1px #200000;
 }
@@ -322,15 +342,19 @@
 	border: solid 2px #200000;
 }
 
+.empire #helper .imp-only {
+	display: table-cell;
+}
+
 /* IMPORTANT - Needs to be at the bottom to override everything else! */
 #helper .closed {
 	height: auto !important;
 }
-#helper .closed * {
+#helper .closed > * {
 	display: none !important;
 }
 
-#helper .closed > h2, #helper .closed > h3, #helper .closed > .close-button, #helper .closed > .show-closed {
+#helper .closed > h2, #helper .closed > h3, #helper .closed > .close-button {
 	display: block !important;
 }
 

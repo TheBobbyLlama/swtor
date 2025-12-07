@@ -22,6 +22,7 @@ function App() {
             <Route index element={<Browse />}></Route>
             <Route path="view/:server?/:characterName" element={<ViewProfile />}></Route>
             <Route path="demo" element={<Demo />}></Route>
+            <Route path="helper/ie" element={<Helper equinox={true} />}></Route>
             <Route path="helper" element={<Helper />}></Route>
             <Route path="*" element={<Null />}></Route>
           </Route>
