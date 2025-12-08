@@ -90,7 +90,7 @@ function SectionTable({ section, postChange }) {
 		const result = [];
 
 		for (let i = 0; i <= width; i++) {
-			result.push(<th key={`header${i}`}><input type="text" placeholder={localize("LABEL_TABLE_HEADER")} value={workingData.headers[i] || ""} onChange={updateHeaders} data-index={i}></input></th>);
+			result.push(<th key={`header${i}`}><input type="text" placeholder={localize("LABEL_TABLE_HEADER")} maxLength={255} value={workingData.headers[i] || ""} onChange={updateHeaders} data-index={i}></input></th>);
 		}
 
 		return result;
@@ -101,7 +101,7 @@ function SectionTable({ section, postChange }) {
 
 		for (let i = 0; i <= width; i++) {
 			result.push(<td>
-				<MarkdownTextArea key={`d${row}${i}`} contentEditableClassName={"text-input"} value={workingData.data[row][i] || ""} onChange={(e) => updateData(e, [ row, i ])} />
+				<MarkdownTextArea key={`d${row}${i}`} contentEditableClassName={"text-input"} maxLength={1000} value={workingData.data[row][i] || ""} onChange={(e) => updateData(e, [ row, i ])} />
 			</td>);
 		}
 
@@ -125,7 +125,7 @@ function SectionTable({ section, postChange }) {
 
 		for (let i = 0; i <= width; i++) {
 			result.push(<td>
-				<MarkdownTextArea key={`d${workingData.data.length}${i}`} contentEditableClassName={"text-input"} value="" onBlur={(e) => e && updateData(e, [ workingData.data.length, i ])} />
+				<MarkdownTextArea key={`d${workingData.data.length}${i}`} contentEditableClassName={"text-input"} maxLength={1000} value="" onBlur={(e) => e && updateData(e, [ workingData.data.length, i ])} />
 			</td>);
 		}
 
@@ -143,12 +143,6 @@ function SectionTable({ section, postChange }) {
 				{generateAdditiveRow()}
 			</tbody></table>
 		</div>
-		{/* <div className="itemized-container">
-			{workingData.items.map((item, index) => 
-				<input key={`itemized${workingData.key}${index}`} type="text" name="items" maxLength={255} value={item} onChange={updateItems} data-index={index}></input>
-			)}
-			<input key={`itemized${workingData.key}${workingData.items.length}`} type="text" name="items" maxLength={255} onBlur={updateItems} data-index={workingData.items.length}></input>
-		</div> */}
 	</section>
 }
 

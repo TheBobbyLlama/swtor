@@ -232,7 +232,7 @@ function Helper({ equinox }) {
 				<button type="button" className="button-small" onClick={() => togglePanel(2)}>{panelStatus & 2 ? "+" : "-"}</button>
 			</div>
 			<h2 title={localize("LABEL_NOTES_HELPER")}>{localize("LABEL_NOTES")}</h2>
-			<MarkdownTextArea value={notes} onChange={updateNotes} />
+			<MarkdownTextArea maxLength={10000} value={notes} onChange={updateNotes} />
 		</div>
 		<div className={`panel cheatsheets${panelStatus & 4 ? " closed" : ""}`}>
 			<div className="close-button">
