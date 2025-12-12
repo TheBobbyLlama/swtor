@@ -111,7 +111,7 @@ function convertTextToOutput(input, connector) {
 	return textChunks;
 }
 
-function Helper({ equinox }) {
+function Helper({ ieMode }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
 	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem(("SWTOR_Panels") || 0) | 16); // Document panel always starts closed
@@ -121,8 +121,15 @@ function Helper({ equinox }) {
 	const [ outputPage, setOutputPage ] = useState(0);
 	const [ notes, setNotes ] = useState(localStorage.getItem("SWTOR_Notes") || "");
 	const [ excludedEmotes, setExcludedEmotes ] = useState(JSON.parse(localStorage.getItem("SWTOR_Emotes")) || []);
+	const [ equinox ] = useState(ieMode || localStorage.getItem("SWTOR_IE"));
 	const navigate = useNavigate();
 	useFade(ref);
+
+	useEffect(() => {
+		 if (ieMode) {
+			localStorage.setItem("SWTOR_IE", true);
+		 }
+	}, []);
 
 	useEffect(() => {
 		document.title = localize("LABEL_RP_HELPER");

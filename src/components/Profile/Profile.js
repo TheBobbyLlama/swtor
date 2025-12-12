@@ -121,7 +121,7 @@ function Profile({ metadata, profileData }) {
 				</tr>}
 				{curProfileData.customFields?.map(field => <tr key={field[0]}>
 					<td><label>{field[0].replace(/:$/, "")}:</label></td>
-					<td>{field[1]}</td>
+					<td><MarkdownView markdown={field[1]} /></td>
 				</tr>)}
 			</tbody></table>
 		</div>
