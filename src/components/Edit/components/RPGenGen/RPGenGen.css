@@ -1,0 +1,53 @@
+#rp-gen-gen {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+}
+
+#rp-gen-gen input, #rp-gen-gen select {
+	font-family: monospace !important;
+	font-size: 16px;
+}
+
+#rp-gen-gen textarea {
+	height: 10rem;
+	width: calc(100% - 16px);
+}
+
+#rp-gen-gen .rp-gen-panel {
+	align-items: stretch;
+	background-color: black;
+	border-radius: 6px;
+	color: gray;
+	display: flex;
+	flex-direction: column;
+	font-family: monospace;
+	gap: 10px;
+	padding: 8px 16px;
+}
+
+#rp-gen-gen .bold {
+	font-weight: bold;
+}
+
+#rp-gen-gen .text-blue {
+	color: #268bd2;
+}
+
+#rp-gen-gen .text-gold {
+	color: #b58900;
+}
+
+#rp-gen-gen .text-green {
+	color: #859900;
+}
+
+#rp-gen-gen .text-red {
+	color: #dc322f !important;
+}
+
+#rp-gen-gen .text-white {
+	color: white !important;
+}

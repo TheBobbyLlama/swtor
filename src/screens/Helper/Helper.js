@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import MarkdownTextArea from "../../components/Markdown/MarkdownTextArea";
+import RPGenGen from "../../components/Edit/components/RPGenGen/RPGenGen";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome} from "@fortawesome/free-solid-svg-icons";
 
@@ -114,7 +115,7 @@ function convertTextToOutput(input, connector) {
 function Helper({ ieMode }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
-	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem(("SWTOR_Panels") || 0) | 16); // Document panel always starts closed
+	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem(("SWTOR_Panels") || 0) | 48); // Some panels always starts closed
 	const [ textInput, setTextInput ] = useState("");
 	const [ textOutput, setTextOutput ] = useState([]);
 	const [ connector, setConnector ] = useState(connectorOptions.find(con => con.label === localStorage.getItem("SWTOR_Connector")) || connectorOptions[0]);
@@ -385,6 +386,13 @@ function Helper({ ieMode }) {
 			</div>
 			<h2><a href="https://docs.google.com/document/d/1sh0sWuoRm01HJfOQPhoAQerm_eYuuqzMsgAgRJgtC2A/preview?tab=t.0#heading=h.n75654wmgaeq" target="blank">Guild Documentation</a></h2>
 			{((panelStatus & 16) === 0) && <iframe src="https://docs.google.com/document/d/1sh0sWuoRm01HJfOQPhoAQerm_eYuuqzMsgAgRJgtC2A/preview?tab=t.0#heading=h.n75654wmgaeq"></iframe>}
+		</div>}
+		{equinox && <div className={`panel${panelStatus & 32 ? " closed" : ""}`}>
+			<div className="close-button">
+				<button type="button" className="button-small" onClick={() => togglePanel(32)}>{panelStatus & 32 ? "+" : "-"}</button>
+			</div>
+			<h2>RP-Gen Generator</h2>
+			<RPGenGen />
 		</div>}
 	</div>;
 }
