@@ -112,7 +112,8 @@ function convertTextToOutput(input, connector) {
 	return textChunks;
 }
 
-function Helper({ ieMode }) {
+// TODO - IE mode is defaulted to true while it is only the Equinox guilds using the helper; this may change in the future.
+function Helper({ ieMode = true }) {
 	const ref = useRef(null);
 	const [ curMode, setCurMode ] = useState(localStorage.getItem("SWTOR_Faction") || "republic");
 	const [ panelStatus, setPanelStatus ] = useState(localStorage.getItem(("SWTOR_Panels") || 0) | 48); // Some panels always starts closed
