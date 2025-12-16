@@ -43,7 +43,7 @@ function decode(name) {
 
 /// Reduces markdown to plain text
 function stripMarkdown(input) {
-	let working = input.replace(/\[(.+?)\]\(.+?\)/g, "$1"); // Links
+	let working = input.replace(/\[(.+?)\]\(.+?( ".*")?\)/g, "$1"); // Links
 	return working.replace(/~~|[*_]/g, "").trim(); // Formatting characters
 }
 

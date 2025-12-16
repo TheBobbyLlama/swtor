@@ -8,7 +8,7 @@ import SectionFrame from "./components/SectionFrame";
 
 import MarkDownInput from "../Markdown/MarkdownInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAlignJustify, faArrowRightFromBracket, faCircleQuestion, faFloppyDisk, faGrip, faImagePortrait, faTable, faTrash, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard, faAlignJustify, faArrowRightFromBracket, faCircleQuestion, faFloppyDisk, faGrip, faTable, faTrash, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
 
 import { modalActions, modalKey, modalSelectors } from "../../store/slice/modal";
 import { localize } from "../../localization";
@@ -317,7 +317,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 	const Quickbar = () => {
 		return <div className="quickbar">
 			<div>
-				<button className="button-minimal" aria-label={localize("LABEL_PREVIEW")} title={localize("LABEL_PREVIEW")} onClick={showPreview}><FontAwesomeIcon icon={faImagePortrait} /></button>
+				<button className="button-minimal" aria-label={localize("LABEL_PREVIEW")} title={localize("LABEL_PREVIEW")} onClick={showPreview}><FontAwesomeIcon icon={faAddressCard} /></button>
 				<button className="button-minimal" aria-label={localize("LABEL_SAVE")} title={localize("LABEL_SAVE")} disabled={demo || !changed || !validateCharacter()} onClick={saveCharacter}><FontAwesomeIcon icon={faFloppyDisk} /></button>
 			</div>
 			<button className="button-minimal" aria-label={localize("LABEL_EDIT_LEAVE")} title={localize("LABEL_EDIT_LEAVE")} onClick={tryLeaveEditMode}><FontAwesomeIcon icon={faArrowRightFromBracket} /></button>

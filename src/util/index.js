@@ -56,3 +56,9 @@ export function htmlDecode(name) {
 export function dbTransform(input) {
 	return htmlDecode(input).replace(/[\s\W]/g, "").toLowerCase();
 }
+
+/// Reduces markdown to plain text
+export function stripMarkdown(input) {
+	let working = input.replace(/\[(.+?)\]\(.+?( ".*")?\)/g, "$1"); // Links
+	return working.replace(/~~|[*_]/g, "").trim(); // Formatting characters
+}

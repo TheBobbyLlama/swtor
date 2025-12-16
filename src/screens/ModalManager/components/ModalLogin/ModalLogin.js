@@ -110,4 +110,6 @@ function ModalLogin() {
 	</div>
 }
 
+ModalLogin.clickOff = true;
+
 export default ModalLogin;

@@ -5,8 +5,9 @@ export const modalKey = {
 	generic: 1,
 	spinner: 2,
 	login: 3,
-	preview: 4,
-	sectionHelp: 5,
+	characterFilter: 4,
+	preview: 5,
+	sectionHelp: 6,
 }
 
 export const modalSlice = createSlice({

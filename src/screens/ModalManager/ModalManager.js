@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalGeneric from "./components/ModalGeneric/ModalGeneric";
 import ModalSpinner from "./components/ModalSpinner/ModalSpinner";
 import ModalLogin from "./components/ModalLogin/ModalLogin";
+import ModalCharacterFilter from "./components/ModalCharacterFilter/ModalCharacterFilter";
 import ModalPreview from "./components/ModalPreview/ModalPreview";
 import ModalSectionHelp from "./components/ModalSectionHelp/ModalSectionHelp";
 
@@ -25,6 +26,9 @@ function ModalManager() {
 				break;
 			case modalKey.login:
 				ModalComponent = ModalLogin;
+				break;
+			case modalKey.characterFilter:
+				ModalComponent = ModalCharacterFilter;
 				break;
 			case modalKey.preview:
 				ModalComponent = ModalPreview;

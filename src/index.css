@@ -36,12 +36,12 @@ button {
 	color: white;
 	cursor: pointer;
 	display: inline-flex;
-  font-size: 1.25rem;
+	font-size: 1.25rem;
 	height: 30px;
 	justify-content: center;
 	padding: 6px 12px;
 	text-shadow: 0px 0px 5px #ffe080;
-  transition: all 0.25s;
+	transition: all 0.25s;
 	user-select: none;
 }
 

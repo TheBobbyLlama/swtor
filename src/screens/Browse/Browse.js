@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Profile from "../../components/Profile/Profile";
 import Edit from "../../components/Edit/Edit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faKeyboard, faPenToSquare, faPlus, faUpRightFromSquare, faUser, faUsers, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
+import { faAddressBook, faClipboard, faFilter, faKeyboard, faPenToSquare, faPlus, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
 
 import spinner from "../../assets/images/spinner.gif";
 import useFade from "../../hooks/useFade";
@@ -13,7 +13,7 @@ import { charActions, charSelectors } from "../../store/slice/character";
 import { modalKey, modalActions } from "../../store/slice/modal";
 import characterFuncs from "../../db/character";
 import { localize } from "../../localization";
-import { getUrlBase } from "../../util";
+import { getUrlBase, stripMarkdown } from "../../util";
 import { dbTransform } from "../../util";
 
 import "./Browse.css";
@@ -31,11 +31,11 @@ function Browse() {
 	const dispatch = useDispatch();
 
 	const workingList = characterDB ? Object.values(characterDB.metadata).filter(data => {
-		// faction Filter is exclusionary, all others are inclusive
 		if (factionFilter.indexOf(data.faction) > -1) return false;
 		if ((charFilter.users) && (charFilter.users.indexOf(data.creator) === -1)) return false;
-		if ((charFilter.species) && (charFilter.species.indexOf(data.species) === -1)) return false;
-		if ((charFilter.gender) && (charFilter.gender.indexOf(data.gender) === -1)) return false;
+		if ((charFilter.species) && (charFilter.species.indexOf(data.species) > -1)) return false;
+		if ((charFilter.gender) && (charFilter.gender.indexOf(data.gender) > -1)) return false;
+		if ((charFilter.homeworld) && (charFilter.homeworld.find(world => world === stripMarkdown(data.homeworld)))) return false;
 
 		return true;
 	 }) : [];
@@ -111,9 +111,15 @@ function Browse() {
 		window.open(`${getUrlBase()}/helper`);
 	}
 
-	// const setFilterByUser = (user) => {
-	// 	dispatch(charActions.setListFilter({ users: [ user ] }));
-	// }
+	const copyProfileLink = () => {
+		if (curCharacter) {
+			navigator.clipboard.writeText(`${window.location.origin}${getUrlBase()}/view/${curCharacter}`);
+		}
+	}
+
+	const setFilterByUser = (user) => {
+		dispatch(charActions.setListFilter({ users: [ user ] }));
+	}
 
 	const goCharacterProfile = () => {
 		if (curCharacter) {
@@ -127,6 +133,15 @@ function Browse() {
 		} else {
 			setFactionFilter([...factionFilter, faction]);
 		}
+	}
+
+	const showCharacterFilter = () => {
+		dispatch(modalActions.showModal({
+			key: modalKey.characterFilter,
+			data: {
+				metadata: characterDB.metadata
+			}
+		}));
 	}
 
 	const toggleEditMode = (forceValue) => {
@@ -184,7 +199,7 @@ function Browse() {
 					<button className={`filter empire${factionFilter.indexOf("FACTION_EMPIRE") > -1 ? "" : " enabled"}`} aria-label={localize("LABEL_FILTER_EMPIRE")} title={localize("LABEL_FILTER_EMPIRE")} onClick={() => toggleFactionFilter("FACTION_EMPIRE")}></button>
 				</div>
 				<h3>{localize("LABEL_CHARACTERS")}</h3>
-				<button className="button-minimal" aria-label={localize("LABEL_FILTERS")} title={localize("LABEL_FILTERS")}><FontAwesomeIcon icon={faFilter} /></button>
+				<button className="button-minimal" aria-label={localize("LABEL_FILTERS")} title={localize("LABEL_FILTERS")} onClick={showCharacterFilter}><FontAwesomeIcon icon={faFilter} /></button>
 			</div>
 			<div className={`characters no-mobile${editMode ? " disabled" : ""}`}>
 				{user && <button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}>{localize("LABEL_CREATE_CHARACTER")}</button>}
@@ -198,10 +213,11 @@ function Browse() {
 			</div>
 		</div>
 		<div ref={ref} className="character-profile">
-			{curCharacter && <>
+			{(!!workingList.length && curCharacter) && <>
 				{!editMode && <>
 					<div className="profile-tools">
-						{/* <button className="button-minimal" aria-label={localize("LABEL_USER_CHARACTERS")} title={localize("LABEL_USERS_CHARACTERS")} onClick={() => setFilterByUser(characterDB.metadata[charKey].creator)}><FontAwesomeIcon icon={faUsers} /></button> */}
+						{((charFilter.users?.length !== 1) || (charFilter.users[0] !== characterDB.metadata[charKey].creator)) && <button className="button-minimal" aria-label={localize("LABEL_USER_CHARACTERS", characterDB.metadata[charKey].creator)} title={localize("LABEL_USERS_CHARACTERS", characterDB.metadata[charKey].creator)} onClick={() => setFilterByUser(characterDB.metadata[charKey].creator)}><FontAwesomeIcon icon={faAddressBook} /></button>}
+						<button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
 						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button>
 					</div>
 					<div className="profile-holder">
