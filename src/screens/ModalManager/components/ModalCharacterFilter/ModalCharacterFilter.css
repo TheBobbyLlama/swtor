@@ -14,6 +14,12 @@
 	gap: 10px;
 }
 
+#filter .filter-body > div > div > div:first-child {
+	align-items: flex-end;
+	display: flex;
+	justify-content: space-between;
+}
+
 #filter .button-row {
 	justify-content: center;
 	display: flex;
@@ -46,12 +52,12 @@
 }
 
 #filter .filter-list *.selected {
-	background-color: #c0a040;
+	background-color: #a09040;
 	color: white;
 }
 
 #filter .filter-list *.selected:hover {
-	background-color: #c8a848;
+	background-color: #b0a050;
 	text-shadow: 0px 0px 10px white;
 }
 

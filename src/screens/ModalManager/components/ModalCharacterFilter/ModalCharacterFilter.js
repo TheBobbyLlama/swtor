@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faToggleOff, faToggleOn } from "@fortawesome/free-solid-svg-icons";
+
 import { charActions, charSelectors } from "../../../../store/slice/character";
 import { modalActions, modalSelectors } from "../../../../store/slice/modal";
 import { localize } from "../../../../localization";
@@ -44,7 +47,33 @@ function ModalCharacterFilter() {
 			newFilter[key] = newFilter[key].filter(item => item !== value);
 		}
 
-		console.log(newFilter[key]);
+		if (!newFilter[key].length)
+			delete newFilter[key];
+
+		setWorkingFilter(newFilter);
+	}
+
+	const toggleCategory = (key) => {
+		const newFilter = { ...workingFilter };
+
+		if (newFilter[key]) {
+			delete newFilter[key];
+		} else {
+			switch (key) {
+				case "gender":
+					newFilter.gender = [ ...genderOptions ];
+					break;
+				case "species":
+					newFilter.species = [ ...speciesOptions ];
+					break;
+				case "homeworld":
+					newFilter.homeworld = [ ...planetOptions ];
+					break;
+				case "users":
+					newFilter.users = [];
+					break;
+			}
+		}
 
 		setWorkingFilter(newFilter);
 	}
@@ -67,23 +96,35 @@ function ModalCharacterFilter() {
 		<div className="filter-body">
 			<div>
 				<div>
-					<label>{localize("LABEL_SPECIES")}</label>
+					<div>
+						<label>{localize("LABEL_SPECIES")}</label>
+						<button className="button-minimal" aria-label={localize("LABEL_TOGGLE_CATEGORY")} title={localize("LABEL_TOGGLE_CATEGORY")} onClick={() => toggleCategory("species")}><FontAwesomeIcon icon={workingFilter.species ? faToggleOn : faToggleOff} /></button>
+					</div>
 					<FilterList items={speciesOptions} filter={workingFilter.species || []} onItemClick={(value) => updateFilter("species", value)} />
 				</div>
 				<div>
-					<label>{localize("LABEL_GENDER")}</label>
+					<div>
+						<label>{localize("LABEL_GENDER")}</label>
+						<button className="button-minimal" aria-label={localize("LABEL_TOGGLE_CATEGORY")} title={localize("LABEL_TOGGLE_CATEGORY")} onClick={() => toggleCategory("gender")}><FontAwesomeIcon icon={workingFilter.gender ? faToggleOn : faToggleOff} /></button>
+					</div>
 					<FilterList items={genderOptions} filter={workingFilter.gender || []} onItemClick={(value) => updateFilter("gender", value)} />
 				</div>
 			</div>
 			<div>
 				<div>
-					<label>{localize("LABEL_HOMEWORLD")}</label>
+					<div>
+						<label>{localize("LABEL_HOMEWORLD")}</label>
+						<button className="button-minimal" aria-label={localize("LABEL_TOGGLE_CATEGORY")} title={localize("LABEL_TOGGLE_CATEGORY")} onClick={() => toggleCategory("homeworld")}><FontAwesomeIcon icon={workingFilter.homeworld ? faToggleOn : faToggleOff} /></button>
+					</div>
 					<FilterList items={planetOptions} filter={workingFilter.homeworld || []} onItemClick={(value) => updateFilter("homeworld", value)} />
 				</div>
 			</div>
 			<div>
 				<div>
-					<label>{localize("LABEL_USER")}</label>
+					<div>
+						<label>{localize("LABEL_USER")}</label>
+						<button className="button-minimal" aria-label={localize("LABEL_TOGGLE_CATEGORY")} title={localize("LABEL_TOGGLE_CATEGORY")} onClick={() => toggleCategory("users")}><FontAwesomeIcon icon={workingFilter.users ? faToggleOn : faToggleOff} /></button>
+					</div>
 					<FilterList items={userOptions} filter={workingFilter.users || []} inverted={!!workingFilter.users} onItemClick={(value) => updateFilter("users", value)} />
 				</div>
 			</div>

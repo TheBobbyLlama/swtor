@@ -113,6 +113,7 @@
 	"LABEL_TEXT_INPUT": "Text Input",
 	"LABEL_TEXT_OUTPUT": "Text Output",
 	"LABEL_THIS_CHARACTER": "This Character",
+	"LABEL_TOGGLE_CATEGORY": "Toggle this category",
 	"LABEL_USER": "User",
 	"LABEL_USERS_CHARACTERS": "View all characters by {0}",
 	"LABEL_VIEW_CHARACTER": "Show profile in new window",
