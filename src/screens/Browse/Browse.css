@@ -177,6 +177,29 @@
 	display: none !important;
 }
 
+#browse #character-notes .button-row {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 20px;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+#browse #character-notes .scrollable {
+	max-height: calc(100vh - 10rem);
+	max-width: calc(100vw - 80px);
+	overflow: auto;
+	width: 800px;
+}
+
+#browse #character-notes .markdown-textarea {
+	height: 40rem;
+	max-height: calc(100vh - 15rem);
+	max-width: calc(100vw - 80px);
+	width: 800px;
+}
+
 @media screen and (max-width: 800px) {
 	#browse {
 		flex-direction: column;

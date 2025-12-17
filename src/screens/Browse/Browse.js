@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Profile from "../../components/Profile/Profile";
 import Edit from "../../components/Edit/Edit";
+import NotesPanel from "./NotesPanel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressBook, faClipboard, faFilter, faKeyboard, faPenToSquare, faPlus, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
+import { faAddressBook, faClipboard, faFilter, faKeyboard, faPenToSquare, faPlus, faReceipt, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
 
 import spinner from "../../assets/images/spinner.gif";
 import useFade from "../../hooks/useFade";
@@ -25,6 +26,8 @@ function Browse() {
 	const [ characterDB, setCharacterDB] = useState(null);
 	const [ factionFilter, setFactionFilter ] = useState([]);
 	const [ curCharacter, setCurCharacter ] = useState("");
+	const [ showNotes, setShowNotes ] = useState(false);
+	const [ charNotes, setCharNotes ] = useState(null);
 	const [ editMode, setEditMode ] = useState(false);
 	const fadeTransition = useFade(ref);
 	const charFilter = useSelector(charSelectors.filter);
@@ -45,6 +48,10 @@ function Browse() {
 	const changeCharacter = (name) => {
 		const newKey = dbTransform(name);
 
+		setCharNotes(null);
+		setShowNotes(false);
+		setEditMode(false);
+
 		if (newKey) {
 			if (characterDB.profiles[newKey]) {
 				setCurCharacter(name);
@@ -58,8 +65,11 @@ function Browse() {
 
 					setCharacterDB(newDB);
 					setCurCharacter(name);
-					setEditMode(false);
 				});
+			}
+
+			if (user && user.uid === characterDB.metadata[newKey].uid) {
+				characterFuncs.loadCharacterNotes(server, newKey).then(setCharNotes);
 			}
 		}
 	}
@@ -83,8 +93,13 @@ function Browse() {
 	}, [workingList]);
 
 	useEffect(() => {
+		setCharNotes(null);
+		setShowNotes(false);
+
 		if (!user) {
 			setEditMode(false);
+		} else if (user.uid === characterDB.metadata[charKey].uid) {
+			characterFuncs.loadCharacterNotes(server, charKey).then(setCharNotes);
 		}
 	}, [user]);
 
@@ -173,6 +188,15 @@ function Browse() {
 		setEditMode(true); // Clear character creation state
 	}
 
+	const updateCharacterNotes = (value) => {
+		if (value !== null) {
+			setCharNotes(value);
+			characterFuncs.saveCharacterNotes(server, charKey, value);
+		}
+	
+		setShowNotes(false);
+	}
+
 	const deleteCharacter = async (name) => {
 		await characterFuncs.deleteCharacter(server, name);
 
@@ -223,9 +247,11 @@ function Browse() {
 					<div className="profile-holder">
 						<div>
 							{user && user.uid === characterDB.metadata[charKey].uid && <div className="edit">
+								{(charNotes !== null) && <button className="button-minimal" aria-label={localize("LABEL_NOTES_EDIT", curCharacter)} title={localize("LABEL_NOTES_EDIT", curCharacter)} onClick={() => setShowNotes(true)}><FontAwesomeIcon icon={faReceipt} /></button>}
 								<button className="button-minimal" aria-label={localize("LABEL_EDIT_CHARACTER", curCharacter)} title={localize("LABEL_EDIT_CHARACTER", curCharacter)} onClick={() => toggleEditMode()}><FontAwesomeIcon icon={faPenToSquare} /></button>
 							</div>}
-							<Profile metadata={characterDB.metadata[charKey]} profileData={characterDB.profiles[charKey]} />
+							<Profile metadata={characterDB.metadata[charKey]} profileData={characterDB.profiles[charKey]} notes={"Hello world!"} />
+							{user && user.uid === characterDB.metadata[charKey].uid && showNotes && <NotesPanel character={curCharacter} notes={charNotes} updateFunc={updateCharacterNotes} />}
 						</div>
 					</div>
 				</>}

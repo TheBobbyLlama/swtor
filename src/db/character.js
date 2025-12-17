@@ -20,8 +20,10 @@ function getCharacterMetadata(server) {
 }
 
 function getFullCharacterData(server, key) {
+	if (!key) throw new Error("getFullCharacterData: No character key!");
+	if (!server) throw new Error("No server specified!");
+
 	return new Promise((res) => {
-		if (!server) throw new Error("No server specified!");
 		const metadataRef = ref(db, `${server}/metadata/${key}`);
 		const profileRef = ref(db, `${server}/profiles/${key}`);
 
@@ -43,6 +45,7 @@ function getFullCharacterData(server, key) {
 }
 
 function getCharacterProfileData(server, key) {
+	if (!key) throw new Error("getCharacterProfileData: No character key!");
 	if (!server) throw new Error("No server specified!");
 
 	return new Promise((res) => {
@@ -58,6 +61,19 @@ function getCharacterProfileData(server, key) {
 	});
 }
 
+function loadCharacterNotes(server, key) {
+	if (!key) throw new Error("loadCharacterNotes: No character key!");
+	if (!server) throw new Error("No server specified!");
+
+	return new Promise((res) => {
+		const notesRef = ref(db, `${server}/notes/${key}`);
+
+		get(notesRef).then((results) => {
+			res(results.val() || "");
+		});
+	});
+}
+
 function saveCharacter(server, metadata, profile) {
 	const key = dbUtil.transform(metadata.name);
 
@@ -67,6 +83,16 @@ function saveCharacter(server, metadata, profile) {
 	const updates = {};
 	updates[`${server}/metadata/${key}`] = metadata;
 	updates[`${server}/profiles/${key}`] = profile;
+
+	return update(ref(db), updates);
+}
+
+function saveCharacterNotes(server, key, notes) {
+	if (!key) throw new Error("saveCharacter: No character key!");
+	if (!server) throw new Error("No server specified!");
+
+	const updates = {};
+	updates[`${server}/notes/${key}`] = notes;
 
 	return update(ref(db), updates);
 }
@@ -88,7 +114,9 @@ const characterFuncs = {
 	getCharacterMetadata,
 	getCharacterProfileData,
 	getFullCharacterData,
+	loadCharacterNotes,
 	saveCharacter,
+	saveCharacterNotes,
 	deleteCharacter,
 }
 

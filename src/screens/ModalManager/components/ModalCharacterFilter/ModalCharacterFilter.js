@@ -78,6 +78,15 @@ function ModalCharacterFilter() {
 		setWorkingFilter(newFilter);
 	}
 
+	const validFilter = () => {
+		if ((workingFilter.gender) && (workingFilter.gender.length === genderOptions.length)) return false;
+		if ((workingFilter.species) && (workingFilter.species.length === speciesOptions.length)) return false;
+		if ((workingFilter.homeworld) && (workingFilter.homeworld.length === planetOptions.length)) return false;
+		if ((workingFilter.users) && (workingFilter.users.length === 0)) return false;
+
+		return true;
+	}
+
 	const doReset = () => {
 		setWorkingFilter({});
 	}
@@ -131,7 +140,7 @@ function ModalCharacterFilter() {
 		</div>
 		<div className="button-row">
 			<button onClick={doReset}>{localize("LABEL_RESET")}</button>
-			<button onClick={doApply}>{localize("LABEL_APPLY")}</button>
+			<button disabled={!validFilter()} onClick={doApply}>{localize("LABEL_APPLY")}</button>
 			<button onClick={doCancel}>{localize("LABEL_CANCEL")}</button>
 		</div>
 	</div>
