@@ -27,7 +27,7 @@ function Browse() {
 	const [ factionFilter, setFactionFilter ] = useState([]);
 	const [ curCharacter, setCurCharacter ] = useState("");
 	const [ showNotes, setShowNotes ] = useState(false);
-	const [ charNotes, setCharNotes ] = useState(null);
+	const [ userNotes, setUserNotes ] = useState(null);
 	const [ editMode, setEditMode ] = useState(false);
 	const fadeTransition = useFade(ref);
 	const charFilter = useSelector(charSelectors.filter);
@@ -48,7 +48,6 @@ function Browse() {
 	const changeCharacter = (name) => {
 		const newKey = dbTransform(name);
 
-		setCharNotes(null);
 		setShowNotes(false);
 		setEditMode(false);
 
@@ -66,10 +65,6 @@ function Browse() {
 					setCharacterDB(newDB);
 					setCurCharacter(name);
 				});
-			}
-
-			if (user && user.uid === characterDB.metadata[newKey].uid) {
-				characterFuncs.loadCharacterNotes(server, newKey).then(setCharNotes);
 			}
 		}
 	}
@@ -93,13 +88,13 @@ function Browse() {
 	}, [workingList]);
 
 	useEffect(() => {
-		setCharNotes(null);
+		setUserNotes(null);
 		setShowNotes(false);
 
 		if (!user) {
 			setEditMode(false);
-		} else if (user.uid === characterDB.metadata[charKey].uid) {
-			characterFuncs.loadCharacterNotes(server, charKey).then(setCharNotes);
+		} else {
+			characterFuncs.loadUserNotes(server, user.uid).then(setUserNotes);
 		}
 	}, [user]);
 
@@ -189,9 +184,11 @@ function Browse() {
 	}
 
 	const updateCharacterNotes = (value) => {
-		if (value !== null) {
-			setCharNotes(value);
-			characterFuncs.saveCharacterNotes(server, charKey, value);
+		if ((user) && (value !== null)) {
+			const newNotes = { ...userNotes };
+			newNotes[charKey] = value;
+			setUserNotes(newNotes);
+			characterFuncs.saveCharacterNotes(server, user.uid, charKey, value);
 		}
 	
 		setShowNotes(false);
@@ -246,12 +243,12 @@ function Browse() {
 					</div>
 					<div className="profile-holder">
 						<div>
-							{user && user.uid === characterDB.metadata[charKey].uid && <div className="edit">
-								{(charNotes !== null) && <button className="button-minimal" aria-label={localize("LABEL_NOTES_EDIT", curCharacter)} title={localize("LABEL_NOTES_EDIT", curCharacter)} onClick={() => setShowNotes(true)}><FontAwesomeIcon icon={faReceipt} /></button>}
-								<button className="button-minimal" aria-label={localize("LABEL_EDIT_CHARACTER", curCharacter)} title={localize("LABEL_EDIT_CHARACTER", curCharacter)} onClick={() => toggleEditMode()}><FontAwesomeIcon icon={faPenToSquare} /></button>
+							{user && <div className="edit">
+								{(userNotes !== null) && <button className="button-minimal" aria-label={localize(userNotes[charKey] ? "LABEL_NOTES_VIEW" : "LABEL_NOTES_ADD", curCharacter)} title={localize(userNotes[charKey] ? "LABEL_NOTES_VIEW" : "LABEL_NOTES_ADD", curCharacter)} onClick={() => setShowNotes(true)}><FontAwesomeIcon icon={userNotes[charKey] ? faReceipt : faPlus} /></button>}
+								{user.uid === characterDB.metadata[charKey].uid && <button className="button-minimal" aria-label={localize("LABEL_EDIT_CHARACTER", curCharacter)} title={localize("LABEL_EDIT_CHARACTER", curCharacter)} onClick={() => toggleEditMode()}><FontAwesomeIcon icon={faPenToSquare} /></button>}
 							</div>}
 							<Profile metadata={characterDB.metadata[charKey]} profileData={characterDB.profiles[charKey]} notes={"Hello world!"} />
-							{user && user.uid === characterDB.metadata[charKey].uid && showNotes && <NotesPanel character={curCharacter} notes={charNotes} updateFunc={updateCharacterNotes} />}
+							{user && showNotes && <NotesPanel character={curCharacter} notes={userNotes[charKey] || ""} updateFunc={updateCharacterNotes} />}
 						</div>
 					</div>
 				</>}

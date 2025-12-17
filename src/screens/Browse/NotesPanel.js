@@ -11,21 +11,21 @@ import { localize } from "../../localization";
 
 function NotesPanel({ character, notes, updateFunc }) {
 	const ref = useRef(null);
-	const [ editMode, setEditMode ] = useState(false);
+	const [ editMode, setEditMode ] = useState(!notes);
 	const [ charNotes, setCharNotes ] = useState(notes);
 	const fadeTransition = useFade(ref);
 
 	useEffect(() => {
-		setEditMode(false);
+		setEditMode(!notes);
 		fadeTransition(() => {});
-	}, [ character, notes ]);
+	}, [ character ]);
 
 	const toggleEditMode = () => {
 		setEditMode(!editMode);
 	}
 
 	const clickOff = (e) => {
-		if ((e.target.id === "modalBG") && (!editMode)) {
+		if ((e.target.id === "modalBG") && ((!editMode) || (!notes && !charNotes))) {
 			updateFunc(null);
 		}
 	}
