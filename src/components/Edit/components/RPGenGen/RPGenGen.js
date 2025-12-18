@@ -15,7 +15,7 @@ function createRPGenText(formData) {
 function RPGenGen() {
 	const [ formData, setFormData ] = useState({
 		subject: "",
-		encryption: localStorage.getItem("SWTOR_Encryption") || 0,
+		encryption: localStorage.getItem("SWTOR_Encryption") || 1,
 		message: "",
 	});
 
