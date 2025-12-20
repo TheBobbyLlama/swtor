@@ -4,7 +4,7 @@
 	width: 100vw;
 }
 
-#browse button {
+#browse button:not(.button-minimal) {
 	border-radius: 4px;
 	color: white;
 }
@@ -155,10 +155,6 @@
 	z-index: 100;
 }
 
-#browse .character-profile .edit button {
-	color: silver;
-}
-
 #browse .profile-tools {
 	position: absolute;
 	right: 0;
@@ -175,6 +171,13 @@
 
 #browse .mobile-only {
 	display: none !important;
+}
+
+#browse .notice-me {
+	animation-name: attract;
+	animation-delay: 0.5s;
+	animation-duration: 1s;
+	animation-iteration-count: 3;
 }
 
 #browse #character-notes .button-row {
@@ -198,6 +201,11 @@
 	max-height: calc(100vh - 15rem);
 	max-width: calc(100vw - 80px);
 	width: 800px;
+}
+
+@keyframes attract {
+	0% { color: #c0a040; }
+	66% { color: rgba(255, 255, 255, 0.5); }
 }
 
 @media screen and (max-width: 800px) {

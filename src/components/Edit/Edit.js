@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard, faAlignJustify, faArrowRightFromBracket, faCircleQuestion, faFloppyDisk, faGrip, faTable, faTrash, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
 
 import { modalActions, modalKey, modalSelectors } from "../../store/slice/modal";
+import { dbTransform } from "../../util";
 import { localize } from "../../localization";
 
 import "./Edit.css";
@@ -61,6 +62,10 @@ function createBaseProfile(user) {
 		pages: [],
 		uid: user.uid,
 	}
+}
+
+function pageTitle(title, index) {
+	return title || `Page ${index + 1}`;
 }
 
 function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, deleteFunc }) {
@@ -314,8 +319,13 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 		dispatch(modalActions.showModal({ key: modalKey.sectionHelp }));
 	}
 
+	const scrollToPage = (e) => {
+		e.preventDefault();
+		document.getElementById(`page_${e.target.name}`)?.scrollIntoView({ behavior: "smooth" });
+	}
+
 	const Quickbar = () => {
-		return <div className="quickbar">
+		return <div className="quickbar mobile-only">
 			<div>
 				<button className="button-minimal" aria-label={localize("LABEL_PREVIEW")} title={localize("LABEL_PREVIEW")} onClick={showPreview}><FontAwesomeIcon icon={faAddressCard} /></button>
 				<button className="button-minimal" aria-label={localize("LABEL_SAVE")} title={localize("LABEL_SAVE")} disabled={demo || !changed || !validateCharacter()} onClick={saveCharacter}><FontAwesomeIcon icon={faFloppyDisk} /></button>
@@ -339,8 +349,27 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 		</div>
 	}
 
-	return <><div id="edit" className="panel">
+	return <>
+	<div id="edit" className="panel">
 		<Quickbar />
+		<nav className="no-mobile">
+			<div className="panel">
+				<button aria-label={localize("LABEL_PREVIEW")} onClick={showPreview}><FontAwesomeIcon icon={faAddressCard} />{localize("LABEL_PREVIEW")}</button>
+				<button aria-label={localize("LABEL_SAVE")} disabled={demo || !changed || !validateCharacter()} onClick={saveCharacter}><FontAwesomeIcon icon={faFloppyDisk} />{localize("LABEL_SAVE")} </button>
+				<button aria-label={localize("LABEL_EDIT_LEAVE")} onClick={tryLeaveEditMode}><FontAwesomeIcon icon={faArrowRightFromBracket} />{localize("LABEL_EDIT_LEAVE")}</button>
+				{!!workingProfile.pages?.length && <>
+					<h3>{localize("LABEL_PAGES")}</h3>
+					<ol>
+						{workingProfile.pages.map((page, index) => {
+							const tmpTitle = pageTitle(page.title, index);
+							const titleKey = dbTransform(tmpTitle);
+
+							return <li key={`${index}${page.title}`}><a name={titleKey} href={`#${titleKey}`} onClick={scrollToPage}>{tmpTitle}</a></li>
+						})}
+					</ol>
+				</>}
+			</div>
+		</nav>
 		{create && <>
 			<h1 className="create-header">
 				<input name="metadata.name" type="text" className={!workingMetadata.name ? "error" : ""} maxLength={50} placeholder={localize("LABEL_CREATE_CHARACTER_NAME")} value={workingMetadata.name || ""} onChange={editCharacter}></input>
@@ -402,7 +431,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			</div>
 		</section>
 	</div>
-	<h2>Pages</h2>
+	<h2>{localize("LABEL_PAGES")}</h2>
 	{workingProfile.pages.map((page, index) => {
 		const deletePage = () => {
 			setPendingCommand(`deletePage|${index}`);
@@ -417,7 +446,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			}));
 		}
 
-		return <div className="page-holder" key={`p${page.key}${index}`}>
+		return <div id={`page_${dbTransform(pageTitle(page.title, index))}`} className="page-holder" key={`p${page.key}${index}`}>
 			<div className="edit-button-row"><button onClick={() => updatePage("addPage", index)}>Add Page</button></div>
 			<div key={`page.${index}`} className="panel edit-page">
 				<Quickbar />

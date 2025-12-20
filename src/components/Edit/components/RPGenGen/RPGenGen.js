@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "./RPGenGen.css";
 
+// https://rebane2001.com/discord-colored-text-generator/
 function createRPGenText(formData) {
 	return `\`\`\`ansi
 [2;40m-|| [2;36m[2;32m[1;32mMessage Sent[0m[2;32m[2;40m[0m[2;36m[2;40m[0m[2;40m || [2;33m[2;34m[1;34mSubject:[0m[2;34m[2;40m[0m[2;33m[2;40m[0m[2;40m [2;37m${formData.subject}[0m[2;40m || [2;34m[1;34mEncryption Level:[0m[2;34m[2;40m[0m[2;40m [2;37m[2;31m${formData.encryption}[0m[2;37m[2;40m[0m[2;40m || [2;33m[2;32m[1;32mMessage Loading...[0m[2;32m[2;40m[0m[2;33m[2;40m[0m[2;40m || -[0m

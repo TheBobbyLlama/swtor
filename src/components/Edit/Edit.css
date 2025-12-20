@@ -23,6 +23,39 @@
 	margin-top: 20px;
 }
 
+#edit > nav {
+	align-items: flex-start;
+	background-color: black;
+	bottom: 0px;
+	display: flex;
+	left: 0px;
+	padding: 16px 0 16px 16px;
+	position: fixed;
+	top: 0px;
+	width: 200px;
+}
+
+#edit > nav > div {
+	align-items: stretch;
+	flex-direction: column;
+	gap: 4px;
+	width: 100%;
+}
+
+#edit > nav button {
+	gap: 10px;
+	justify-content: flex-start;
+}
+
+#edit > nav h3 {
+	margin: 10px 0 0 0;
+}
+
+#edit > nav ol {
+	margin: 0;
+	padding-left: 1rem;
+}
+
 .edit-holder {
 	align-items: center;
 	display: flex;
@@ -232,4 +265,18 @@
 #edit .invalid {
 	border-color: red;
 	color: red;
+}
+
+#edit .mobile-only {
+	display: none !important;
+}
+
+@media screen and (max-width: 800px) {
+	#edit .mobile-only {
+		display: flex !important;
+	}
+
+	#edit .no-mobile {
+		display: none !important;
+	}
 }

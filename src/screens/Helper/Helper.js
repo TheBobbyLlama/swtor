@@ -392,7 +392,7 @@ function Helper({ ieMode = true }) {
 			<div className="close-button">
 				<button type="button" className="button-small" onClick={() => togglePanel(32)}>{panelStatus & 32 ? "+" : "-"}</button>
 			</div>
-			<h2>RP-Gen Generator</h2>
+			<h2>RP-Gen Creator</h2>
 			<RPGenGen />
 		</div>}
 	</div>;
