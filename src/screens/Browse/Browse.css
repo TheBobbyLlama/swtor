@@ -176,8 +176,8 @@
 #browse .notice-me {
 	animation-name: attract;
 	animation-delay: 0.5s;
-	animation-duration: 1s;
-	animation-iteration-count: 3;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
 }
 
 #browse #character-notes .button-row {
@@ -204,7 +204,10 @@
 }
 
 @keyframes attract {
-	0% { color: #c0a040; }
+	0% { color: rgba(255, 255, 255, 0.5); }
+	16.66% { scale: 1; }
+	33% { color: #c0a040; scale: 1.05; }
+	50% { scale: 1; }
 	66% { color: rgba(255, 255, 255, 0.5); }
 }
 

@@ -28,6 +28,7 @@ function Browse() {
 	const [ curCharacter, setCurCharacter ] = useState("");
 	const [ showNotes, setShowNotes ] = useState(false);
 	const [ userNotes, setUserNotes ] = useState(null);
+	const [ attractMode, setAttractMode ] = useState(!user);
 	const [ editMode, setEditMode ] = useState(false);
 	const fadeTransition = useFade(ref);
 	const charFilter = useSelector(charSelectors.filter);
@@ -95,6 +96,7 @@ function Browse() {
 			setEditMode(false);
 		} else {
 			characterFuncs.loadUserNotes(server, user.uid).then(setUserNotes);
+			setAttractMode(false);
 		}
 	}, [user]);
 
@@ -210,7 +212,7 @@ function Browse() {
 	return <div id="browse">
 		<div className="character-list">
 			<div className="quick-links">
-				{!user && <button className={`button-minimal${user ? "" : " notice-me"}`} aria-label={localize("LABEL_LOGIN_SIGNUP")} title={localize("LABEL_LOGIN_SIGNUP")} onClick={doLogin}><FontAwesomeIcon icon={faUserSlash} className="hover-hide" /><FontAwesomeIcon icon={faUser} className="hover-only" /></button>}
+				{!user && <button className={`button-minimal${attractMode ? " notice-me" : ""}`} aria-label={localize("LABEL_LOGIN_SIGNUP")} title={localize("LABEL_LOGIN_SIGNUP")} onClick={doLogin}><FontAwesomeIcon icon={faUserSlash} className="hover-hide" /><FontAwesomeIcon icon={faUser} className="hover-only" /></button>}
 				{user && <button className="button-minimal" aria-label={localize("LABEL_LOGOUT_USER", user.displayName)} title={localize("LABEL_LOGOUT_USER", user.displayName)} onClick={doLogout}><FontAwesomeIcon icon={faUser} className="hover-hide" /><FontAwesomeIcon icon={faUserXmark} className="hover-only" /></button>}
 				<button className="button-minimal no-mobile" aria-label={localize("LABEL_RP_HELPER")} title={localize("LABEL_RP_HELPER")} onClick={goHelperPage}><FontAwesomeIcon icon={faKeyboard} /></button>
 			</div>

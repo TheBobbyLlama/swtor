@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownAZ, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { modalActions, modalKey, modalSelectors } from "../../../store/slice/modal";
+import { stripMarkdown } from "../../../util";
 import { localize } from "../../../localization";
 
 function SectionItemized({ section, postChange }) {
@@ -42,7 +43,7 @@ function SectionItemized({ section, postChange }) {
 
 	const sortItems = () => {
 		const newData = { ...workingData, items: [ ...workingData.items ] };
-		newData.items.sort();
+		newData.items.sort((a, b) => stripMarkdown(a).localeCompare(stripMarkdown(b)));
 		setWorkingData(newData);
 		postChange("updateSection", newData);
 	}
