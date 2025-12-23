@@ -8,6 +8,7 @@ export const modalKey = {
 	characterFilter: 4,
 	preview: 5,
 	sectionHelp: 6,
+	discordPost: 7,
 }
 
 export const modalSlice = createSlice({

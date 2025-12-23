@@ -6,6 +6,7 @@ import Edit from "../../components/Edit/Edit";
 import NotesPanel from "./NotesPanel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressBook, faClipboard, faFilter, faKeyboard, faPenToSquare, faPlus, faReceipt, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import spinner from "../../assets/images/spinner.gif";
 import useFade from "../../hooks/useFade";
@@ -119,8 +120,13 @@ function Browse() {
 		}));
 	}
 
-	const goHelperPage = () => {
-		window.open(`${getUrlBase()}/helper`);
+	const startDiscordPost = () => {
+		dispatch(modalActions.showModal({ key: modalKey.discordPost }));
+	}
+
+	const goHelperPage = (e) => {
+		if ((!e) || (e.button === 1))
+			window.open(`${getUrlBase()}/helper`);
 	}
 
 	const copyProfileLink = () => {
@@ -214,7 +220,8 @@ function Browse() {
 			<div className="quick-links">
 				{!user && <button className={`button-minimal${attractMode ? " notice-me" : ""}`} aria-label={localize("LABEL_LOGIN_SIGNUP")} title={localize("LABEL_LOGIN_SIGNUP")} onClick={doLogin}><FontAwesomeIcon icon={faUserSlash} className="hover-hide" /><FontAwesomeIcon icon={faUser} className="hover-only" /></button>}
 				{user && <button className="button-minimal" aria-label={localize("LABEL_LOGOUT_USER", user.displayName)} title={localize("LABEL_LOGOUT_USER", user.displayName)} onClick={doLogout}><FontAwesomeIcon icon={faUser} className="hover-hide" /><FontAwesomeIcon icon={faUserXmark} className="hover-only" /></button>}
-				<button className="button-minimal no-mobile" aria-label={localize("LABEL_RP_HELPER")} title={localize("LABEL_RP_HELPER")} onClick={goHelperPage}><FontAwesomeIcon icon={faKeyboard} /></button>
+				<button className="button-minimal no-mobile" aria-label={localize("LABEL_DISCORD_POST")} title={localize("LABEL_DISCORD_POST")} onClick={startDiscordPost}><FontAwesomeIcon icon={faDiscord} /></button>
+				<button className="button-minimal no-mobile" aria-label={localize("LABEL_RP_HELPER")} title={localize("LABEL_RP_HELPER")} onClick={() => goHelperPage()} onMouseDown={goHelperPage}><FontAwesomeIcon icon={faKeyboard} /></button>
 			</div>
 			<div className={`header${editMode ? " disabled" : ""}`}>
 				<div>

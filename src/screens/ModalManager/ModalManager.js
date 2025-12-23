@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import ModalGeneric from "./components/ModalGeneric/ModalGeneric";
 import ModalSpinner from "./components/ModalSpinner/ModalSpinner";
 import ModalLogin from "./components/ModalLogin/ModalLogin";
 import ModalCharacterFilter from "./components/ModalCharacterFilter/ModalCharacterFilter";
 import ModalPreview from "./components/ModalPreview/ModalPreview";
 import ModalSectionHelp from "./components/ModalSectionHelp/ModalSectionHelp";
+import ModalDiscordPost from "./components/ModalDiscordPost/ModalDiscordPost";
 
 import { modalActions, modalKey, modalSelectors } from "../../store/slice/modal";
 
@@ -12,6 +15,7 @@ import "./ModalManager.css";
 
 function ModalManager() {
 	const currentKey = useSelector(modalSelectors.key);
+	const [ startClickOff, setStartClickOff ] = useState(false);
 	const dispatch = useDispatch();
 
 	if (currentKey) {
@@ -36,18 +40,27 @@ function ModalManager() {
 			case modalKey.sectionHelp:
 				ModalComponent = ModalSectionHelp;
 				break;
+			case modalKey.discordPost:
+				ModalComponent = ModalDiscordPost;
+				break;
 			default:
 				ModalComponent = null;
 		}
 
+		const checkClickOff = (e) => {
+			if (e.button === 0) {
+				setStartClickOff((e.target.id === "modalBG") && (ModalComponent.clickOff));
+			}
+		}
+
 		const clickOff = (e) => {
-			if ((e.target.id === "modalBG") && (ModalComponent.clickOff)) {
+			if ((e.button === 0) && (startClickOff) && (e.target.id === "modalBG") && (ModalComponent.clickOff)) {
 				dispatch(modalActions.showModal({ key: modalKey.clear }));
 			}
 		}
 
 		if (ModalComponent) {
-			return <div id="modalBG" onClick={clickOff}>
+			return <div id="modalBG" onMouseDown={checkClickOff} onMouseUp={clickOff}>
 				<ModalComponent />
 			</div>;
 		}

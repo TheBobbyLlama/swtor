@@ -54,6 +54,7 @@
 	"LABEL_DELETE_PAGE_CONFIRM": "Are you sure you want to delete this page?",
 	"LABEL_DELETE_SECTION": "Delete this section",
 	"LABEL_DELETE_SECTION_CONFIRM": "Are you sure you want to delete this section?",
+	"LABEL_DISCORD_POST": "Create Discord Post",
 	"LABEL_DISPLAY_NAME": "Display Name",
 	"LABEL_EDIT_CHARACTER": "Edit {0}",
 	"LABEL_EDIT_LEAVE": "Leave",

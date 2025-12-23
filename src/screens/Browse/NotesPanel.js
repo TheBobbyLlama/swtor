@@ -13,6 +13,7 @@ function NotesPanel({ character, notes, updateFunc }) {
 	const ref = useRef(null);
 	const [ editMode, setEditMode ] = useState(!notes);
 	const [ charNotes, setCharNotes ] = useState(notes);
+	const [ startClickOff, setStartClickOff ] = useState(false);
 	const fadeTransition = useFade(ref);
 
 	useEffect(() => {
@@ -24,13 +25,19 @@ function NotesPanel({ character, notes, updateFunc }) {
 		setEditMode(!editMode);
 	}
 
+	const checkClickOff = (e) => {
+		if (e.button === 0) {
+			setStartClickOff((e.target.id === "modalBG") && ((!editMode) || (!notes && !charNotes)));
+		}
+	}
+
 	const clickOff = (e) => {
-		if ((e.target.id === "modalBG") && ((!editMode) || (!notes && !charNotes))) {
+		if ((e.button === 0) && (startClickOff) && (e.target.id === "modalBG") && ((!editMode) || (!notes && !charNotes))) {
 			updateFunc(null);
 		}
 	}
 
-	return <div id="modalBG" onClick={clickOff}>
+	return <div id="modalBG" onMouseDown={checkClickOff} onMouseUp={clickOff}>
 		<div id="character-notes" className="panel fade-out" ref={ref}>
 			<h2>{localize("LABEL_NOTES")}<button className="button-minimal" aria-label={localize("LABEL_NOTES_EDIT", character)} title={localize("LABEL_NOTES_EDIT", character)} onClick={toggleEditMode}><FontAwesomeIcon icon={faPen} /></button></h2>
 			{!editMode && <div className="scrollable">

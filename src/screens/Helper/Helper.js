@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import MarkdownTextArea from "../../components/Markdown/MarkdownTextArea";
 import RPGenGen from "../../components/Edit/components/RPGenGen/RPGenGen";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome} from "@fortawesome/free-solid-svg-icons";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import useFade from "../../hooks/useFade";
+import { modalActions, modalKey } from "../../store/slice/modal";
 import { localize } from "../../localization";
+import { getUrlBase } from "../../util";
 
 import "./Helper.css";
 
@@ -124,6 +128,7 @@ function Helper({ ieMode = true }) {
 	const [ notes, setNotes ] = useState(localStorage.getItem("SWTOR_Notes") || "");
 	const [ excludedEmotes, setExcludedEmotes ] = useState(JSON.parse(localStorage.getItem("SWTOR_Emotes")) || []);
 	const [ equinox ] = useState(ieMode || localStorage.getItem("SWTOR_IE"));
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	useFade(ref);
 
@@ -144,6 +149,15 @@ function Helper({ ieMode = true }) {
 
 	const goHome = () => {
 		navigate("/");
+	}
+
+	const goHomeNew = (e) => {
+		if (e.button === 1)
+			window.open(`${getUrlBase()}`);
+	}
+
+	const startDiscordPost = () => {
+		dispatch(modalActions.showModal({ key: modalKey.discordPost }));
 	}
 
 	const changeMode = (mode) => {
@@ -196,7 +210,8 @@ function Helper({ ieMode = true }) {
 	return <div id="helper" className="fade fade-out" ref={ref}>
 		<header>
 			<div>
-				<button className="button-minimal" aria-label={localize("LABEL_GO_HOME")} title={localize("LABEL_GO_HOME")} onClick={goHome}><FontAwesomeIcon icon={faHome} /></button>
+				<button className="button-minimal" aria-label={localize("LABEL_GO_HOME")} title={localize("LABEL_GO_HOME")} onClick={goHome} onMouseDown={goHomeNew}><FontAwesomeIcon icon={faHome} /></button>
+				<button className="button-minimal" aria-label={localize("LABEL_DISCORD_POST")} title={localize("LABEL_DISCORD_POST")} onClick={startDiscordPost}><FontAwesomeIcon icon={faDiscord} /></button>
 			</div>
 			<h1>{localize("LABEL_RP_HELPER")}</h1>
 			<nav>

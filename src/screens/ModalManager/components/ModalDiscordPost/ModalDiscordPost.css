@@ -1,0 +1,30 @@
+#discord-post > button {
+	margin-top: 20px;
+}
+
+#discord-post h1 {
+	font-family: sans-serif;
+}
+
+#discord-post h2 {
+	margin: 0;
+}
+
+#discord-post h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+}
+
+#discord-post h4, h5, h6 {
+	color: red;
+}
+
+#discord-post .markdown-toolbar button {
+	text-shadow: none;
+}
+
+#discord-post .markdown-textarea {
+	height: 40rem;
+	max-height: calc(100vh - 14rem);
+	max-width: 1000px;
+	width: calc(100vw - 80px);
+}
