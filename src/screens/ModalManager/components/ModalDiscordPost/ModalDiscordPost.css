@@ -10,11 +10,11 @@
 	margin: 0;
 }
 
-#discord-post h1, h2, h3, h4, h5, h6 {
+#discord-post h1, #discord-post h2, #discord-post h3, #discord-post h4, #discord-post h5, #discord-post h6 {
 	text-align: left;
 }
 
-#discord-post h4, h5, h6 {
+#discord-post h4, #discord-post h5, #discord-post h6 {
 	color: red;
 }
 
