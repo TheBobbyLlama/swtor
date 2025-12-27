@@ -167,9 +167,10 @@ function Helper({ ieMode = true }) {
 
 	const updateText = (e) => {
 		const newText = e.target.value;
+		const newOutput = newText.split("\n").map(chunk => convertTextToOutput(chunk, connector)).filter(chunk => chunk.length).flat();
 
 		setTextInput(newText);
-		setTextOutput(convertTextToOutput(newText, connector));
+		setTextOutput(newOutput);
 		setOutputPage(0);
 	}
 
@@ -244,7 +245,7 @@ function Helper({ ieMode = true }) {
 					</div>
 					<div>
 						<button className="button-small" disabled={!textOutput.length || outputPage === 0} onClick={() => setOutputPage(outputPage - 1)}>{"<"}</button>
-						<label> {outputPage + 1}/{textOutput.length} </label>
+						<label> {Math.min(outputPage + 1, textOutput.length)}/{textOutput.length} </label>
 						<button className="button-small" disabled={!textOutput.length || outputPage >= textOutput.length - 1} onClick={() => setOutputPage(outputPage + 1)}>{">"}</button>
 					</div>
 					<button className="button-small" disabled={!textOutput.length} onClick={copyOutputPage}>{localize("LABEL_COPY")}</button>

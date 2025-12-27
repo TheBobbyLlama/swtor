@@ -1,3 +1,9 @@
+#discord-post {
+	max-height: calc(100vh - 100px);
+	max-width: calc(100vw - 80px);
+	overflow-y: auto;
+}
+
 #discord-post > button {
 	margin-top: 20px;
 }
@@ -24,7 +30,23 @@
 
 #discord-post .markdown-textarea {
 	height: 40rem;
-	max-height: calc(100vh - 14rem);
+	max-height: calc(100vh - 20rem);
 	max-width: 1000px;
 	width: calc(100vw - 80px);
+}
+
+#discord-post > .save-load {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 10px 20px;
+	margin-top: 10px;
+	width: 100%;
+}
+
+#discord-post > .save-load > div {
+	align-items: stretch;
+	display: flex;
+	gap: 10px;
 }

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	MDXEditor,
 	headingsPlugin,
@@ -19,9 +19,15 @@ import {
 import "@mdxeditor/editor/style.css";
 import "./Markdown.css";
 
-function MarkdownTextArea({ placeholder, maxLength = 1000, value, onBlur, onChange, dataPath, allowHeadings, ...props }) {
+function MarkdownTextArea({ placeholder, maxLength = 1000, value, onBlur, onChange, dataPath, getEditorRef, allowHeadings, ...props }) {
 	const ref = useRef(null);
 	const [ curValue, setCurValue ] = useState(value);
+
+	useEffect(() => {
+		if(getEditorRef) {
+			getEditorRef(ref?.current);
+		}
+	}, [ ref?.current ]);
 
 	const processChange = (v) => {
 		if (v !== value) {
