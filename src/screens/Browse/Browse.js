@@ -239,7 +239,7 @@ function Browse() {
 				<select value={curCharacter} onChange={(e) => changeCharacter(e.target.value)}>
 					{workingList.map(data => <option key={data.name}>{data.name}</option>)}
 				</select>
-				<button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}><FontAwesomeIcon icon={faPlus} /></button>
+				{user && <button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}><FontAwesomeIcon icon={faPlus} /></button>}
 			</div>
 		</div>
 		<div ref={ref} className="character-profile">
