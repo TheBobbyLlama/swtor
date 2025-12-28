@@ -55,7 +55,7 @@ function convertTextToOutput(input, connector) {
 	if (input.startsWith("/")) {
 		textPrefix = input.substring(0, input.indexOf(" ") + 1);
 
-		if (textPrefix.match(/^\/(e|ops|p|ra|s|y) $/g)?.length) {
+		if (textPrefix.match(/^\/(e|ops|g|p|ra|ro|s|y) $/g)?.length) {
 			input = input.substring(textPrefix.length).trim();
 		} else {
 			if (textPrefix.length > 4) {
@@ -169,9 +169,12 @@ function Helper({ ieMode = true }) {
 		const newText = e.target.value;
 		const newOutput = newText.split("\n").map(chunk => convertTextToOutput(chunk, connector)).filter(chunk => chunk.length).flat();
 
+		if ((!newText) || (!newText.startsWith(textInput.substring(0, 100)))) {
+			setOutputPage(0);
+		}
+
 		setTextInput(newText);
 		setTextOutput(newOutput);
-		setOutputPage(0);
 	}
 
 	const togglePanel = (panelID) => {
