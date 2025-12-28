@@ -101,7 +101,7 @@ function Profile({ metadata, profileData }) {
 	return <div id="profile" className="panel fade-out" ref={panelRef}>
 		<h1>{curMetadata.name}</h1>
 		<div className="character-info">
-			{curProfileData.image && <div className="character-image" style={{ background: `url('${curProfileData.image}')`}}></div>}
+			{curProfileData.image && <div key={curMetadata.name} className="character-image" style={{ background: `url('${curProfileData.image}')`}}></div>}
 			<table><tbody>
 				<tr>
 					<td><label>{localize("LABEL_SPECIES")}:</label></td>

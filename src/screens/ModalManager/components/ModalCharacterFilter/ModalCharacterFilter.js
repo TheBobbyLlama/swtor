@@ -24,7 +24,7 @@ function ModalCharacterFilter() {
 
 	const genderOptions = [ ...new Set(Object.values(metadata).map(data => data.gender)) ].toSorted();
 	const speciesOptions = [ ...new Set(Object.values(metadata).map(data => data.species)) ].toSorted();
-	const planetOptions = [ ...new Set(Object.values(metadata).map(data => stripMarkdown(data.homeworld).split("|")).flat().map(x => x.trim())) ].toSorted();
+	const planetOptions = [ ...new Set(Object.values(metadata).map(data => stripMarkdown(data.homeworld).split(/\||\//)).flat().map(x => x.trim())) ].toSorted();
 	const userOptions = [ ...new Set(Object.values(metadata).map(data => data.creator)) ].toSorted();
 
 	const updateFilter = (key, value) => {

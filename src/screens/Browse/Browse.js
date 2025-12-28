@@ -131,7 +131,7 @@ function Browse() {
 
 	const copyProfileLink = () => {
 		if (curCharacter) {
-			navigator.clipboard.writeText(`${window.location.origin}${getUrlBase()}/view/${curCharacter}`);
+			navigator.clipboard.writeText(`${window.location.origin}${getUrlBase()}/view/${encodeURI(curCharacter)}`);
 		}
 	}
 
