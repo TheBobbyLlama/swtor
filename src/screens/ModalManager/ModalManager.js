@@ -8,6 +8,7 @@ import ModalCharacterFilter from "./components/ModalCharacterFilter/ModalCharact
 import ModalPreview from "./components/ModalPreview/ModalPreview";
 import ModalSectionHelp from "./components/ModalSectionHelp/ModalSectionHelp";
 import ModalDiscordPost from "./components/ModalDiscordPost/ModalDiscordPost";
+import ModalHelperHelper from "./components/ModalHelperHelper/ModalHelperHelper";
 
 import { modalActions, modalKey, modalSelectors } from "../../store/slice/modal";
 
@@ -42,6 +43,9 @@ function ModalManager() {
 				break;
 			case modalKey.discordPost:
 				ModalComponent = ModalDiscordPost;
+				break;
+			case modalKey.helperHelper:
+				ModalComponent = ModalHelperHelper;
 				break;
 			default:
 				ModalComponent = null;

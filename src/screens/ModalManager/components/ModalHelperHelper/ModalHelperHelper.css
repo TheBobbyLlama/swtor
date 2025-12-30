@@ -1,0 +1,28 @@
+#helperhelp {
+	max-width: calc(100vw - 88px);
+	overflow-y: auto;
+	width: 600px;
+}
+
+#helperhelp table {
+	border: solid 1px black;
+	margin: 20px 0;
+}
+
+#helperhelp th {
+	border-right: solid 1px black;
+	padding-right: 10px;
+	text-align: right;
+}
+
+#helperhelp tr + tr > th {
+	border-top: solid 1px black;
+}
+
+#helperhelp td {
+	padding-left: 10px;
+}
+
+.empire #helperhelp table, .empire #helperhelp th {
+	border-color: #300000;
+}

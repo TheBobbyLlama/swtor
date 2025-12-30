@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MarkdownTextArea from "../../components/Markdown/MarkdownTextArea";
 import RPGenGen from "../../components/Edit/components/RPGenGen/RPGenGen";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome} from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion, faHome} from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import useFade from "../../hooks/useFade";
@@ -55,7 +55,7 @@ function convertTextToOutput(input, connector) {
 	if (input.startsWith("/")) {
 		textPrefix = input.substring(0, input.indexOf(" ") + 1);
 
-		if (textPrefix.match(/^\/(e|ops|g|p|ra|ro|s|y) $/g)?.length) {
+		if (textPrefix.match(/^\/(s|e|y|p|g|ops|ra|ro) $/g)?.length) {
 			input = input.substring(textPrefix.length).trim();
 		} else {
 			if (textPrefix.length > 4) {
@@ -160,6 +160,10 @@ function Helper({ ieMode = true }) {
 		dispatch(modalActions.showModal({ key: modalKey.discordPost }));
 	}
 
+	const showHelperHelper = () => {
+		dispatch(modalActions.showModal({ key: modalKey.helperHelper }));
+	}
+
 	const changeMode = (mode) => {
 		setCurMode(mode);
 		localStorage.setItem("SWTOR_Faction", mode);
@@ -171,6 +175,8 @@ function Helper({ ieMode = true }) {
 
 		if ((!newText) || (!newText.startsWith(textInput.substring(0, 100)))) {
 			setOutputPage(0);
+		} else if (outputPage >= newOutput.length) {
+			setOutputPage(newOutput.length - 1);
 		}
 
 		setTextInput(newText);
@@ -229,7 +235,7 @@ function Helper({ ieMode = true }) {
 			</div>
 			<h2 className="show-closed">{localize("LABEL_TEXT_INPUT")}</h2>
 			<div className="input-holder">
-				<h2>{localize("LABEL_TEXT_INPUT")}</h2>
+				<h2>{localize("LABEL_TEXT_INPUT")} <button className="button-minimal" aria-label={localize("LABEL_HELP")} title={localize("LABEL_HELP")} onClick={showHelperHelper}><FontAwesomeIcon icon={faCircleQuestion} /></button></h2>
 				<textarea id="text-input" placeholder={localize("LABEL_HELPER_INPUT")} value={textInput} onChange={updateText}></textarea>
 			</div>
 			<div className="output-holder">
