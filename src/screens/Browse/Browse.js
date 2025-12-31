@@ -77,6 +77,14 @@ function Browse() {
 		dispatch(authActions.startupTasks());
 	}, []);
 
+	useEffect(() => {
+		if (user) {
+			dispatch(charActions.setListFilter({ users: [ user.displayName ] }));
+		} else {
+			dispatch(charActions.setListFilter({ }));
+		}
+	}, [ user ]);
+
 	// Load character data
 	useEffect(() => {
 		if (!characterDB) {
@@ -244,7 +252,7 @@ function Browse() {
 					<button className={`filter empire${factionFilter.indexOf("FACTION_EMPIRE") > -1 ? "" : " enabled"}`} aria-label={localize("LABEL_FILTER_EMPIRE")} title={localize("LABEL_FILTER_EMPIRE")} onClick={() => toggleFactionFilter("FACTION_EMPIRE")}></button>
 				</div>
 				<h3>{localize("LABEL_CHARACTERS")}</h3>
-				<button className="button-minimal" aria-label={localize("LABEL_FILTERS")} title={localize("LABEL_FILTERS")} onClick={showCharacterFilter}><FontAwesomeIcon icon={faFilter} /></button>
+				<button className={`button-minimal${Object.keys(charFilter).length ? " active" : ""}`} aria-label={localize("LABEL_FILTERS")} title={localize("LABEL_FILTERS")} onClick={showCharacterFilter}><FontAwesomeIcon icon={faFilter} /></button>
 			</div>
 			<div className={`characters no-mobile${editMode ? " disabled" : ""}`}>
 				{user && <button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}>{localize("LABEL_CREATE_CHARACTER")}</button>}

@@ -109,6 +109,10 @@
 	flex-direction: row;
 }
 
+#browse .character-list .button-minimal.active {
+	color: #c8a848;
+}
+
 #browse .character-list select {
 	flex-grow: 1;
 }
