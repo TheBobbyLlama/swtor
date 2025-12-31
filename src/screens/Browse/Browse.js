@@ -155,10 +155,18 @@ function Browse() {
 	}
 
 	const showCharacterFilter = () => {
+		const newMetadata = { ...characterDB.metadata };
+
+		Object.keys(newMetadata).forEach((key) => {
+			if ((newMetadata[key].private) && (newMetadata[key].uid !== user?.uid)) {
+				delete newMetadata[key];
+			}
+		})
+
 		dispatch(modalActions.showModal({
 			key: modalKey.characterFilter,
 			data: {
-				metadata: characterDB.metadata
+				metadata: newMetadata
 			}
 		}));
 	}
