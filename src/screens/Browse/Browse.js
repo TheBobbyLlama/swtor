@@ -72,6 +72,12 @@ function Browse() {
 		}
 	}
 
+	// Restore user on startup
+	useEffect(() => {
+		dispatch(authActions.startupTasks());
+	}, []);
+
+	// Load character data
 	useEffect(() => {
 		if (!characterDB) {
 			characterFuncs.getCharacterMetadata(server).then((result) => {

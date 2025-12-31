@@ -422,7 +422,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			</div>
 			<div>
 				<label>{localize("LABEL_AGE")}:</label>
-				<input type="text" name="profile.age" maxLength={50} value={workingProfile.age} onChange={editCharacter}></input>
+				<input type="text" name="profile.age" maxLength={50} value={workingProfile.age || ""} onChange={editCharacter}></input>
 			</div>
 			<div>
 				<label>{localize("LABEL_HOMEWORLD")}:</label>

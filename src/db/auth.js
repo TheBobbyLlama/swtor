@@ -1,27 +1,28 @@
-import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { get, set, ref } from "firebase/database";
+import { browserLocalPersistence, setPersistence, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from ".";
 
-import db, { auth } from ".";
-import dbUtil from "./util";
-
-// Load metadata, then check if user is already logged in.
+/// Load stored user info on startup.
 function startupTasks() {
 	return new Promise((res) => {
-		if (auth.currentUser) {
-			res(auth.currentUser);
-		} else {
-			res(false);
-		}
+		auth.authStateReady().then(() => {
+			if (auth.currentUser) {
+				res({ displayName: auth.currentUser.displayName, email: auth.currentUser.email, uid: auth.currentUser.uid });
+			} else {
+				res(false);
+			}
+		});
 	});
 }
 
 function login(userData) {
 	return new Promise((res, rej) => {
 		try {
-			signInWithEmailAndPassword(auth, userData.email, userData.password).then((result) => {
-				res(result.user);
-			}).catch((e) => {
-				rej(e.toString());
+			setPersistence(auth, browserLocalPersistence).then(() =>{
+				signInWithEmailAndPassword(auth, userData.email, userData.password).then((result) => {
+					res(result.user);
+				}).catch((e) => {
+					rej(e.toString());
+				});
 			});
 		} catch (e) {
 			rej(e.toString());
