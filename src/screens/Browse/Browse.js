@@ -5,7 +5,7 @@ import Profile from "../../components/Profile/Profile";
 import Edit from "../../components/Edit/Edit";
 import NotesPanel from "./NotesPanel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressBook, faClipboard, faFilter, faKeyboard, faPenToSquare, faPlus, faReceipt, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
+import { faAddressBook, faClipboard, faFilter, faKeyboard, faLock, faPenToSquare, faPlus, faReceipt, faUpRightFromSquare, faUser, faUserSlash, faUserXmark } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 import spinner from "../../assets/images/spinner.gif";
@@ -242,11 +242,11 @@ function Browse() {
 			</div>
 			<div className={`characters no-mobile${editMode ? " disabled" : ""}`}>
 				{user && <button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}>{localize("LABEL_CREATE_CHARACTER")}</button>}
-				{workingList.map(data => <button key={data.name} className={data.faction === "FACTION_EMPIRE" ? "empire" : "republic"} onClick={() => changeCharacter(data.name)} disabled={data.name === curCharacter}>{data.name}</button>)}
+				{workingList.map(data => <button key={data.name} className={data.faction === "FACTION_EMPIRE" ? "empire" : "republic"} onClick={() => changeCharacter(data.name)} disabled={data.name === curCharacter}>{user && data.private && <FontAwesomeIcon icon={faLock} />}{data.name}</button>)}
 			</div>
 			<div className={`characters mobile-only${editMode ? " disabled" : ""}`}>
 				<select value={curCharacter} onChange={(e) => changeCharacter(e.target.value)}>
-					{workingList.map(data => <option key={data.name}>{data.name}</option>)}
+					{workingList.map(data => <option key={data.name} value={data.name}>{user && data.private && "[["}{data.name}{user && data.private && "]]"}</option>)}
 				</select>
 				{user && <button className="button-small" aria-label={localize("LABEL_CREATE_CHARACTER")} title={localize("LABEL_CREATE_CHARACTER")} onClick={() => toggleEditMode("create")}><FontAwesomeIcon icon={faPlus} /></button>}
 			</div>
@@ -254,11 +254,11 @@ function Browse() {
 		<div ref={ref} className="character-profile">
 			{(!!workingList.length && curCharacter) && <>
 				{!editMode && <>
-					{!characterDB.metadata[charKey].private && <div className="profile-tools">
+					<div className="profile-tools">
 						{((charFilter.users?.length !== 1) || (charFilter.users[0] !== characterDB.metadata[charKey].creator)) && <button className="button-minimal" aria-label={localize("LABEL_USER_CHARACTERS", characterDB.metadata[charKey].creator)} title={localize("LABEL_USERS_CHARACTERS", characterDB.metadata[charKey].creator)} onClick={() => setFilterByUser(characterDB.metadata[charKey].creator)}><FontAwesomeIcon icon={faAddressBook} /></button>}
-						<button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
-						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button>
-					</div>}
+						{!characterDB.metadata[charKey].private && <><button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
+						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button></>}
+					</div>
 					<div className="profile-holder">
 						<div>
 							{user && <div className="edit">
