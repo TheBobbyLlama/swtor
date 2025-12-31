@@ -98,7 +98,7 @@ function Profile({ metadata, profileData }) {
 		if (pageRef.current)
 			pageRef.current.className = "current-page";
 
-		setTimeout(() => { if (pageRef.current) pageRef.current.className = "current-page fade-in"; panelRef.current.scrollIntoView({ behavior: "instant", inline: "start" }); }, 1);
+		setTimeout(() => { if (pageRef.current) { pageRef.current.className = "current-page fade-in"; panelRef.current.scrollIntoView({ behavior: "instant", inline: "start" }); } }, 1);
 	}
 
 	return <div id="profile" className="panel fade-out" ref={panelRef}>
@@ -133,7 +133,7 @@ function Profile({ metadata, profileData }) {
 		</div>
 		{curPage > -1 && <div className="current-page" ref={pageRef}>
 			<h2>{pageData.title}</h2>
-			{pageData.sections.map(renderSection)}
+			{pageData.sections?.map(renderSection)}
 		</div>}
 		<footer>{metadata.private ? 
 			<p>{localize("LABEL_PRIVATE")}</p> :
