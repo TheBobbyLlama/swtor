@@ -17,6 +17,13 @@
 	transition: color 0.5s;
 }
 
+#profile footer p {
+	color: #c0a040;
+	font-style: italic;
+	font-weight: 500;
+	user-select: none;
+}
+
 #profile iframe {
 	height: calc(100vh -  40px);
 	width: 100%;

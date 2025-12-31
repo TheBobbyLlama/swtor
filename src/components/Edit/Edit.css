@@ -23,6 +23,11 @@
 	margin-top: 20px;
 }
 
+#edit input[type='checkbox'] + label {
+	cursor: pointer;
+	margin-left: 4px;
+}
+
 #edit > nav {
 	align-items: flex-start;
 	background-color: black;

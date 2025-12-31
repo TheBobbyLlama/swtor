@@ -78,7 +78,10 @@ function Profile({ metadata, profileData }) {
 
 	useEffect(() => {
 		fadeTransition(() => {
-			document.title = `${localize("APP_NAME")} - ${metadata.name}`;
+			if (metadata.name) {
+				document.title = `${localize("APP_NAME")} - ${metadata.name}`;
+			}
+
 			document.body.className = (metadata.faction === "FACTION_EMPIRE") ? "empire" : "republic";
 
 			setMetadata(metadata);
@@ -132,7 +135,10 @@ function Profile({ metadata, profileData }) {
 			<h2>{pageData.title}</h2>
 			{pageData.sections.map(renderSection)}
 		</div>}
-		<footer><label>{localize("LABEL_BY")}</label><span>{metadata.creator}</span></footer>
+		<footer>{metadata.private ? 
+			<p>{localize("LABEL_PRIVATE")}</p> :
+			<><label>{localize("LABEL_BY")}</label><span>{metadata.creator}</span></>}
+		</footer>
 	</div>;
 }
 

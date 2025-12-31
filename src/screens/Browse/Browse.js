@@ -36,6 +36,7 @@ function Browse() {
 	const dispatch = useDispatch();
 
 	const workingList = characterDB ? Object.values(characterDB.metadata).filter(data => {
+		if ((data.private) && (data.uid !== user?.uid)) return false;
 		if (factionFilter.indexOf(data.faction) > -1) return false;
 		if ((charFilter.users) && (charFilter.users.indexOf(data.creator) === -1)) return false;
 		if ((charFilter.species) && (charFilter.species.indexOf(data.species) > -1)) return false;
@@ -245,11 +246,11 @@ function Browse() {
 		<div ref={ref} className="character-profile">
 			{(!!workingList.length && curCharacter) && <>
 				{!editMode && <>
-					<div className="profile-tools">
+					{!characterDB.metadata[charKey].private && <div className="profile-tools">
 						{((charFilter.users?.length !== 1) || (charFilter.users[0] !== characterDB.metadata[charKey].creator)) && <button className="button-minimal" aria-label={localize("LABEL_USER_CHARACTERS", characterDB.metadata[charKey].creator)} title={localize("LABEL_USERS_CHARACTERS", characterDB.metadata[charKey].creator)} onClick={() => setFilterByUser(characterDB.metadata[charKey].creator)}><FontAwesomeIcon icon={faAddressBook} /></button>}
 						<button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
 						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button>
-					</div>
+					</div>}
 					<div className="profile-holder">
 						<div>
 							{user && <div className="edit">

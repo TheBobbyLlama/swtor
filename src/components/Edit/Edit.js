@@ -61,6 +61,7 @@ function createBaseMetadata(user) {
 	return {
 		creator: user.displayName,
 		uid: user.uid,
+		private: true,
 		// Defaults - Need to specify these for correct interaction with select elements
 		faction: (document.body.className === "empire") ? "FACTION_EMPIRE" : "FACTION_REPUBLIC",
 		gender: "GENDER_FEMALE",
@@ -394,6 +395,10 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			<div><label>{localize("LABEL_EDITING")}</label>{metadata.name}</div>
 			<button className="button-minimal" aria-label={localize("LABEL_DELETE_CHARACTER", workingMetadata.name || localize("LABEL_THIS_CHARACTER").toLowerCase())} title={localize("LABEL_DELETE_CHARACTER", workingMetadata.name || localize("LABEL_THIS_CHARACTER").toLowerCase())} onClick={deleteCharacter}><FontAwesomeIcon icon={faTrash} /></button>
 		</h1>}
+		<div>
+			<input id="public" type="checkbox" checked={!workingMetadata.private} onChange={() => editCharacter(!workingMetadata.private, "metadata.private")} />
+			<label htmlFor="public">{localize("LABEL_PUBLIC")}</label>
+		</div>
 		<h3>{localize("LABEL_CHARACTER_IMAGE")}</h3>
 		<section className="character-image">
 			<div className="image-demo" style={workingProfile.image && { background: `url('${workingProfile.image}')`}} />

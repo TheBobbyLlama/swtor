@@ -128,6 +128,8 @@
 	"LABEL_PASSWORD": "Password",
 	"LABEL_PASSWORD_CONFIRM": "Confirm Password",
 	"LABEL_PREVIEW": "Preview",
+	"LABEL_PRIVATE": "Private",
+	"LABEL_PUBLIC": "Public",
 	"LABEL_REPUBLIC_VIEW": "Republic View",
 	"LABEL__REQUIRED": "{0} (Required)",
 	"LABEL_RESET": "Reset",

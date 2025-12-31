@@ -31,7 +31,7 @@ function ViewProfile() {
 		return <img src={spinner} alt="One moment..." />;
 	}
 
-	if (!characterDB.metadata?.[abbrName]) {
+	if (!characterDB.metadata?.[abbrName] || characterDB.metadata[abbrName].private) {
 		return <Null />;
 	}
 	

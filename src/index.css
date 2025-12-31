@@ -109,6 +109,12 @@ iframe {
 	border-radius: 8px;
 }
 
+input[type='checkbox'] {
+	cursor: pointer;
+	height: 1rem;
+	width: 1rem;
+}
+
 input[type='email'], input[type='password'], input[type='text'], input[type='url'], select, textarea, .text-input {
 	background-color: #181008;
 	background-image: linear-gradient(#0c0804, #181008, #181008);
