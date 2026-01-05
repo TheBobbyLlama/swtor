@@ -212,8 +212,11 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 	const saveCharacter = async () => {
 		if ((changed) && (validateCharacter())) {
 			try {
+				const saveProfile = { ...workingProfile, lastUpdated: Date.now() };
+
 				dispatch(modalActions.showModal(modalKey.spinner));
-				await saveFunc(workingMetadata, workingProfile);
+				await saveFunc(workingMetadata, saveProfile);
+				setWorkingProfile(saveProfile);
 				setChanged(false);
 				dispatch(modalActions.clearModal());
 			} catch (e) {
@@ -322,7 +325,7 @@ function Edit({ create, demo, user, metadata, profileData, leaveFunc, saveFunc, 
 			key: modalKey.preview,
 			data: {
 				metadata: workingMetadata,
-				profile: workingProfile
+				profile: { ...workingProfile, lastUpdated: Date.now() },
 			}
 		}));
 	}

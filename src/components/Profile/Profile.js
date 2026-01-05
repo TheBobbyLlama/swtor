@@ -68,6 +68,10 @@ function renderSection(section, index) {
 	return <div>Invalid section type!</div>
 }
 
+function quickDateFormat(date) {
+	return `${date.toDateString()}, ${date.getHours() % 12 || 12}:${date.getMinutes().toString().padStart(2, '0')} ${localize(date.getHours() < 12 ? "LABEL_TIME_AM" : "LABEL_TIME_PM")}`;
+}
+
 function Profile({ metadata, profileData }) {
 	const panelRef = useRef(null);
 	const pageRef = useRef(null);
@@ -93,12 +97,21 @@ function Profile({ metadata, profileData }) {
 	const pageData = curProfileData.pages[curPage];
 
 	const changePage = (page) => {
-		setCurPage(page);
-		
-		if (pageRef.current)
-			pageRef.current.className = "current-page";
+		if (page === curPage) {
+			setCurPage(-1);
+		} else {
+			setCurPage(page);
+			
+			if (pageRef.current)
+				pageRef.current.className = "current-page";
 
-		setTimeout(() => { if (pageRef.current) { pageRef.current.className = "current-page fade-in"; panelRef.current.scrollIntoView({ behavior: "instant", inline: "start" }); } }, 1);
+			setTimeout(() => {
+				if (pageRef.current) {
+					pageRef.current.className = "current-page fade-in";
+					panelRef.current?.scrollIntoView({ behavior: "smooth"});
+				}
+			}, 1);
+		}
 	}
 
 	return <div id="profile" className="panel fade-out" ref={panelRef}>
@@ -129,13 +142,13 @@ function Profile({ metadata, profileData }) {
 			</tbody></table>
 		</div>
 		<div className="button-row">
-			{curProfileData.pages.map((page, index) => <button key={`${index}:${page.title}`} onClick={() => changePage(index)} disabled={curPage === page.title}>{page.title}</button>)}
+			{curProfileData.pages.map((page, index) => <button key={`${index}:${page.title}`} onClick={() => changePage(index)}>{page.title}</button>)}
 		</div>
 		{curPage > -1 && <div className="current-page" ref={pageRef}>
 			<h2>{pageData.title}</h2>
 			{pageData.sections?.map(renderSection)}
 		</div>}
-		<footer>{metadata.private ? 
+		<footer title={curProfileData.lastUpdated ? localize("LABEL_LAST_UPDATED_", quickDateFormat(new Date(curProfileData.lastUpdated))) : undefined}>{metadata.private ? 
 			<p>{localize("LABEL_PRIVATE")}</p> :
 			<><label>{localize("LABEL_BY")}</label><span>{metadata.creator}</span></>}
 		</footer>
