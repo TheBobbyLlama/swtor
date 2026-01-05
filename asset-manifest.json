@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/swtor/static/css/main.e03fba1e.css",
-    "main.js": "/swtor/static/js/main.eefbe838.js",
+    "main.js": "/swtor/static/js/main.db769412.js",
     "static/js/453.1fca83dd.chunk.js": "/swtor/static/js/453.1fca83dd.chunk.js",
     "static/media/SfDistantGalaxy-0l3d.ttf": "/swtor/static/media/SfDistantGalaxy-0l3d.ee1b4a3597465caa4073.ttf",
     "static/media/spinner.gif": "/swtor/static/media/spinner.7b4da7a15287c40931f1.gif",
     "index.html": "/swtor/index.html",
     "main.e03fba1e.css.map": "/swtor/static/css/main.e03fba1e.css.map",
-    "main.eefbe838.js.map": "/swtor/static/js/main.eefbe838.js.map",
+    "main.db769412.js.map": "/swtor/static/js/main.db769412.js.map",
     "453.1fca83dd.chunk.js.map": "/swtor/static/js/453.1fca83dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e03fba1e.css",
-    "static/js/main.eefbe838.js"
+    "static/js/main.db769412.js"
   ]
 }
