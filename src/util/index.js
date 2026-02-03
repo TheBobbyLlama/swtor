@@ -62,3 +62,15 @@ export function stripMarkdown(input) {
 	let working = input.replace(/\[(.+?)\]\(.+?( ".*")?\)/g, "$1"); // Links
 	return working.replace(/~~|[*_]/g, "").trim(); // Formatting characters
 }
+
+/// Very basic hash function, we're not encrypting anything, we just want a quick conversion.
+export function stringKey(input) {
+	let hash = 0;
+
+	for (const char of input) {
+		hash = (hash << 5) - hash + char.charCodeAt(0);
+		hash |= 0; // Constrain to 32bit integer
+	}
+
+	return btoa(hash);
+}

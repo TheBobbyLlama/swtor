@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<Main />}>
             <Route index element={<Browse />}></Route>
             <Route path="view/:server?/:characterName" element={<ViewProfile />}></Route>
+            <Route path="private/:server?/:characterName/:privateKey" element={<ViewProfile />}></Route>
             <Route path="demo" element={<Demo />}></Route>
             <Route path="helper/ie" element={<Helper ieMode={true} />}></Route>
             <Route path="helper" element={<Helper />}></Route>

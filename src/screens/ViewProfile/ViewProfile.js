@@ -6,14 +6,14 @@ import Profile from "../../components/Profile/Profile";
 
 import characterFuncs from "../../db/character";
 import { localize } from "../../localization";
-import { dbTransform } from "../../util";
+import { dbTransform, stringKey } from "../../util";
 
 import spinner from "../../assets/images/spinner.gif";
 
 // const characterDB = require("../../data/characters.json");
 
 function ViewProfile() {
-	const { characterName, server } = useParams();
+	const { characterName, privateKey, server } = useParams();
 	const [ characterDB, setCharacterDB ] = useState(null);
 	const abbrName = dbTransform(characterName);
 
@@ -31,7 +31,7 @@ function ViewProfile() {
 		return <img src={spinner} alt="One moment..." />;
 	}
 
-	if (!characterDB.metadata?.[abbrName] || characterDB.metadata[abbrName].private) {
+	if (!characterDB.metadata?.[abbrName] || ((characterDB.metadata[abbrName].private) && (stringKey(characterDB.metadata[abbrName].creator + characterDB.metadata[abbrName].name) !== privateKey))) {
 		return <Null />;
 	}
 	

@@ -105,7 +105,6 @@
 
 #profile .itemized-container {
 	margin-top: 20px;
-	max-width: 1000px;
 }
 
 #profile .itemized-container h3 {
@@ -123,9 +122,17 @@
 }
 
 #profile .itemized div {
+	align-items: center;
+	display: flex;
+	flex-basis: 20%;
 	gap: 10px;
 	margin: 4px 8px;
 	min-width: 160px;
+	transition: text-shadow 0.5s;
+}
+
+#profile .itemized div:hover {
+	text-shadow: 0 0 5px white;
 }
 
 #profile .itemized p {

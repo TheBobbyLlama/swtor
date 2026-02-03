@@ -16,9 +16,16 @@ import { modalKey, modalActions } from "../../store/slice/modal";
 import characterFuncs from "../../db/character";
 import { localize } from "../../localization";
 import { getUrlBase, stripMarkdown } from "../../util";
-import { dbTransform } from "../../util";
+import { dbTransform, stringKey } from "../../util";
 
 import "./Browse.css";
+
+function getProfileLink(charData) {
+	if (charData.private)
+		return `${window.location.origin}${getUrlBase()}/private/${encodeURI(charData.name)}/${stringKey(charData.creator + charData.name)}`;
+	else
+		return `${window.location.origin}${getUrlBase()}/view/${encodeURI(charData.name)}`;
+}
 
 function Browse() {
 	const ref = useRef(null);
@@ -146,7 +153,7 @@ function Browse() {
 
 	const copyProfileLink = () => {
 		if (curCharacter) {
-			navigator.clipboard.writeText(`${window.location.origin}${getUrlBase()}/view/${encodeURI(curCharacter)}`);
+			navigator.clipboard.writeText(getProfileLink(characterDB.metadata[charKey]));
 		}
 	}
 
@@ -156,7 +163,7 @@ function Browse() {
 
 	const goCharacterProfile = () => {
 		if (curCharacter) {
-			window.open(`${getUrlBase()}/view/${curCharacter}`);
+			window.open(getProfileLink(characterDB.metadata[charKey]));
 		}
 	}
 
@@ -270,8 +277,8 @@ function Browse() {
 				{!editMode && <>
 					<div className="profile-tools">
 						{((charFilter.users?.length !== 1) || (charFilter.users[0] !== characterDB.metadata[charKey].creator)) && (workingList.filter(meta => meta.uid === characterDB.metadata[charKey].uid).length > 1) && <button className="button-minimal" aria-label={localize("LABEL_USER_CHARACTERS", characterDB.metadata[charKey].creator)} title={localize("LABEL_USERS_CHARACTERS", characterDB.metadata[charKey].creator)} onClick={() => setFilterByUser(characterDB.metadata[charKey].creator)}><FontAwesomeIcon icon={faAddressBook} /></button>}
-						{!characterDB.metadata[charKey].private && <><button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
-						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button></>}
+						<button className="button-minimal" aria-label={localize("LABEL_CHARACTER_LINK", curCharacter)} title={localize("LABEL_CHARACTER_LINK", curCharacter)} onClick={copyProfileLink}><FontAwesomeIcon icon={faClipboard} /></button>
+						<button className="button-minimal" aria-label={localize("LABEL_VIEW_CHARACTER")} title={localize("LABEL_VIEW_CHARACTER")} onClick={goCharacterProfile}><FontAwesomeIcon icon={faUpRightFromSquare} /></button>
 					</div>
 					<div className="profile-holder">
 						<div>
