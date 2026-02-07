@@ -15,7 +15,7 @@ function trimArray(arr) {
 }
 
 function SectionTable({ section, postChange }) {
-	const [ workingData, setWorkingData ] = useState(section);
+	const [ workingData, setWorkingData ] = useState({ data: [], headers: [], ...section });
 	const [ pendingCommand, setPendingCommand ] = useState();
 	const modalConfirmed = useSelector(modalSelectors.confirm);
 	const dispatch = useDispatch();

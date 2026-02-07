@@ -25,10 +25,11 @@ function renderSection(section, index) {
 			return <section className="itemized-container" key={index}>
 				{section.heading && <h3><MarkdownView markdown={section.heading} /></h3>}
 				<div className="itemized">
-					{section.items.map(item => <MarkdownView key={item} markdown={item} />)}
+					{section.items?.map(item => <MarkdownView key={item} markdown={item} />)}
 				</div>
 			</section>;
 		case "table":
+			if (section.data) {
 			const width = Math.max(section.headers.length, section.data.reduce((result, current) => { return Math.max(result, current.length)}, section.data[0]?.length || 0));
 			const generateHeaders = () => {
 				const result = [];
@@ -58,6 +59,11 @@ function renderSection(section, index) {
 					</tbody></table>
 				</div>
 			</section>
+			} else {
+				return <section key={index}>
+				{section.heading && <h3><MarkdownView markdown={section.heading} /></h3>}
+			</section>
+			}
 		case "text":
 			return <section key={index}>
 				{section.heading && <h3><MarkdownView markdown={section.heading} /></h3>}
