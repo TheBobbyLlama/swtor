@@ -43,6 +43,11 @@ const connectorOptions = [
 		start: "|| ",
 		end: " ||",
 	},
+	{
+		label: "|< >|",
+		start: "|< ",
+		end: " >|",
+	}
 ];
 
 function convertTextToOutput(input, connector) {
@@ -143,8 +148,20 @@ function Helper({ ieMode = true }) {
 		document.body.className = curMode;
 	}, [curMode]);
 
+	const refreshTextOutput = (input, connector) => {
+		const newOutput = input.split("\n").map(chunk => convertTextToOutput(chunk, connector)).filter(chunk => chunk.length).flat();
+
+		if ((!input) || (!input.startsWith(textInput.substring(0, 100)))) {
+			setOutputPage(0);
+		} else if (outputPage >= newOutput.length) {
+			setOutputPage(newOutput.length - 1);
+		}
+
+		setTextOutput(newOutput);
+	}
+
 	useEffect(() => {
-		setTextOutput(convertTextToOutput(textInput, connector));
+		refreshTextOutput(textInput, connector);
 	}, [connector])
 
 	const goHome = () => {
@@ -171,16 +188,9 @@ function Helper({ ieMode = true }) {
 
 	const updateText = (e) => {
 		const newText = e.target.value;
-		const newOutput = newText.split("\n").map(chunk => convertTextToOutput(chunk, connector)).filter(chunk => chunk.length).flat();
 
-		if ((!newText) || (!newText.startsWith(textInput.substring(0, 100)))) {
-			setOutputPage(0);
-		} else if (outputPage >= newOutput.length) {
-			setOutputPage(newOutput.length - 1);
-		}
-
+		refreshTextOutput(newText, connector);
 		setTextInput(newText);
-		setTextOutput(newOutput);
 	}
 
 	const togglePanel = (panelID) => {

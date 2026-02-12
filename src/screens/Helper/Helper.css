@@ -6,6 +6,10 @@
 	width: 100%;
 }
 
+#helper #connector-options {
+	font-family: 'Courier New', Courier, monospace;
+}
+
 #helper header {
 	align-items: flex-start;
 	display: flex;
